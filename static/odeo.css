@@ -1,0 +1,17 @@
+#heading {
+  margin: 10px;
+}
+
+#signature {
+  text-align: right;
+}
+
+#title {
+  float: left;
+}
+
+#subtitle {
+  float: left;
+  margin-left: 3px;
+  line-height: 2px;
+}
