@@ -1,7 +1,4 @@
-#pasteur-tekst {
-  float: left;
-}
-
-#pasteur-plaatje {
+#pasteur {
+  width: 200px;
   float: right;
 }

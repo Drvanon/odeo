@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 from bottle import jinja2_view as view, jinja2_template as template, route, run
-from bottle import static_file
+from bottle import static_file, default_app
 
 @route('/')
 @view('home.html')
@@ -35,7 +35,7 @@ def spontaan():
     return {}
 
 @route('/leven')
-@view('base.html')
+@view('leven.html')
 def leven():
     return {}
 
@@ -53,4 +53,7 @@ def cambrium():
 def send_static(filename):
     return static_file(filename, root='./static')
 
-run(debug=True)
+if __name__ == '__main__':
+    run(debug=True)
+else:
+    app = default_app()
