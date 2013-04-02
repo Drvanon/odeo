@@ -1,9 +1,12 @@
+#!/usr/bin/env python3
+
 from bottle import jinja2_view as view, jinja2_template as template, route, run
 from bottle import static_file
 
 @route('/')
+@view('home.html')
 def home():
-    return template('home.html')
+    return {}
 
 @route('/eenvoudig')
 @view('base.html')
@@ -27,24 +30,25 @@ def extremofielen():
 
 
 @route('/spontaan')
-@view('base.html')
-def home():
+@view('spontaan.html')
+def spontaan():
     return {}
 
 @route('/leven')
 @view('base.html')
-def home():
+def leven():
     return {}
 
 @route('/fossielen')
 @view('base.html')
-def home():
+def fossielen():
     return {}
 
 @route('/cambrium')
 @view('base.html')
-def home():
+def cambrium():
     return {}
+
 @route('/static/<filename:path>')
 def send_static(filename):
     return static_file(filename, root='./static')
