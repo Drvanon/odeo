@@ -9,8 +9,7 @@
   tabs = ['', 'spontaan', 'leven', 'eenvoudig', 'fossielen', 'cambrium'];
 
   $(function() {
-    var tab, _i, _len, _results;
-    _results = [];
+    var img, tab, _i, _j, _len, _len1, _ref, _results;
     for (_i = 0, _len = tabs.length; _i < _len; _i++) {
       tab = tabs[_i];
       if (!loc) {
@@ -18,10 +17,30 @@
         break;
       }
       if (loc === tab) {
-        _results.push($('#' + loc).addClass('active'));
-      } else {
-        _results.push(void 0);
+        $('#' + loc).addClass('active');
       }
+    }
+    _ref = $('img');
+    _results = [];
+    for (_j = 0, _len1 = _ref.length; _j < _len1; _j++) {
+      img = _ref[_j];
+      _results.push((function(img) {
+        var _this = this;
+        $('body').append('<div id="' + img.id + '-modal" class="modal hide fade">\
+          <div class="modal-header">\
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">\
+              &times;\
+            </button>\
+          </div>\
+          <div class="modal-body">', +img + '</div>\
+          <div class="modal-footer">\
+            <a href="#" class="btn">Close</a>\
+          </div>\
+        </div>');
+        return img.live('click', function(event) {
+          return $('#' + img.id + '-modal').modal();
+        });
+      })(img));
     }
     return _results;
   });

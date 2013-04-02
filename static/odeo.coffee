@@ -10,17 +10,21 @@ $ ->
       break
     if loc is tab then $('#'+loc).addClass('active')
   for img in $('img')
-    $('body').append('
-      <div class="modal hide fade">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-            &times;
-          </button>
-        </div>
-        <div class="modal-body">'
-        + img +
-        '</div>
-        <div class="modal-footer">
-          <a href="#" class="btn">Close</a>
-        </div>
-      </div>')
+    do(img) ->
+      $('body').append(
+        '<div id="'+ img.id + '-modal" class="modal hide fade">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+              &times;
+            </button>
+          </div>
+          <div class="modal-body">'
+          + img +
+          '</div>
+          <div class="modal-footer">
+            <a href="#" class="btn">Close</a>
+          </div>
+        </div>'
+      )
+      img.live 'click', (event) => 
+        $('#' + img.id + '-modal').modal()
