@@ -1,21 +1,27 @@
+{% macro image(link) %}
+<>
+{% endmacro %}
 <!DOCTYPE html>
 <html>
   <head>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
-    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+    <link href="/static/bootstrap.min.css" rel="stylesheet">
+    <script src="/static/bootstrap.min.js"></script>
     <script src="/static/odeo.js"></script>
     <link href="/static/odeo.css" rel="stylesheet">
     {% block extrahead %}{% endblock %}
   </head>
   <body>
-  <div class="pageheader">
-    <h1 id="heading">
-      <div id="title">OdeO </div>
-      <div id="subtitle"><small>Onderzoek <br />de <br /> Oorsprong</small></div>
-    </h1>
+  <div class="row">
+      <div class="pageheader">
+        <h1 id="heading">
+          <div id="title">OdeO </div>
+          <div id="subtitle"><small>Onderzoek <br />de <br /> Oorsprong</small></div>
+        </h1>
+      </div>
   </div>
-    <div class="span12" id="nav">
+  <div class='row'>
+    <div class="span10 offset4" id="nav">
       <ul class="nav nav-tabs">
         <li id="home"><a href='/'>Home</a></li>
         <li id="spontaan"><a href='/spontaan'>Spontaan ontstaan leven</a></li>
@@ -41,8 +47,9 @@
         <li id="cambrium"><a href='/cambrium'>Cambrische Explosie</a></li>
       </ul>
     </div>
-    <div class="span2"></div>
-    <div class="span8" id="container">{% block content %}{% endblock %}</div>
-    <div class="span2"></div>
+  </div>
+  <div class="row">
+    <div class="span8 offset4" id="container">{% block content %}{% endblock %}</div>
+  </div>
   </body>
 </html>

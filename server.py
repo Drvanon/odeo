@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from bottle import jinja2_view as view, jinja2_template as template, route, run
+from bottle import jinja2_view as view, route, run
 from bottle import static_file, default_app
 
 @route('/')
