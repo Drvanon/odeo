@@ -1,12 +1,28 @@
-{% macro image(link) %}
-<>
+{% macro image(link, id) %}
+<a href="#{{ id }}_modal" role="button" data-toggle="modal" class="img_link">
+  <img id="{{ id }}" src="{{ link }}">
+</a>
+
+<div class="modal-containter">
+  <div id="{{ id }}_modal" class="modal hide fade" tabindex="-1" role="dialog" 
+    aria-labelledby="{{ id }}_modal_label" aria-hidden="true">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+        class="close_modal">×</button>
+    </div>
+    <div class="modal-body">
+      <img src="{{ link }}">
+    </div>
+  </div>
+</div>
 {% endmacro %}
+
 <!DOCTYPE html>
 <html>
   <head>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <link href="/static/bootstrap.min.css" rel="stylesheet">
-    <script src="/static/bootstrap.min.js"></script>
+    <script src="/static/jquery.min.js"></script>
+    <link href="/static/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <script src="/static/bootstrap/bootstrap.min.js"></script>
     <script src="/static/odeo.js"></script>
     <link href="/static/odeo.css" rel="stylesheet">
     {% block extrahead %}{% endblock %}
