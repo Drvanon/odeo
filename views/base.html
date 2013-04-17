@@ -1,18 +1,14 @@
-{% macro image(link, id) %}
+{% macro image(link, id, position=None, width=None, height=None) %}
 <a href="#{{ id }}_modal" role="button" data-toggle="modal" class="img_link">
-  <img id="{{ id }}" src="{{ link }}">
+  <img id="{{ id }}" class="{{ position if position }} img-polaroid" 
+  style="{{ 'width: ' + width + 'px;\n' if width }}
+         {{ 'height: ' + height + 'px;' if height }}" src="{{ link }}">
 </a>
 
-<div class="modal-containter">
-  <div id="{{ id }}_modal" class="modal hide fade" tabindex="-1" role="dialog" 
-    aria-labelledby="{{ id }}_modal_label" aria-hidden="true">
-    <div class="modal-header">
-      <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
-        class="close_modal">×</button>
-    </div>
-    <div class="modal-body">
-      <img src="{{ link }}">
-    </div>
+<div id="{{ id }}_modal" class="modal hide fade" tabindex="-1" role="dialog" 
+  aria-labelledby="{{ id }}_modal_label" aria-hidden="true">
+  <div class="modal-body">
+    <img src="{{ link }}">
   </div>
 </div>
 {% endmacro %}
@@ -37,7 +33,7 @@
       </div>
   </div>
   <div class='row'>
-    <div class="span10 offset4" id="nav">
+    <div class="span10 offset3" id="nav">
       <ul class="nav nav-tabs">
         <li id="home"><a href='/'>Home</a></li>
         <li id="spontaan"><a href='/spontaan'>Spontaan ontstaan leven</a></li>
@@ -65,7 +61,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="span8 offset4" id="container">{% block content %}{% endblock %}</div>
+    <div class="span8 offset3" id="container">{% block content %}{% endblock %}</div>
   </div>
   </body>
 </html>

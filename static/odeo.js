@@ -13,7 +13,8 @@
     body = $('body');
     modal_container = $('.modal_container');
     body.toggleClass('body-locked');
-    return modal_container.toggleClass('dp-block');
+    modal_container.toggleClass('dp-block');
+    return console.log('Toggled');
   };
 
   $(function() {
@@ -28,7 +29,10 @@
         $('#' + loc).addClass('active');
       }
     }
-    return $('.img_link').click(function() {
+    $('.img_link').click(function() {
+      return toggleModal();
+    });
+    return $('.close_modal').click(function() {
       return toggleModal();
     });
   });

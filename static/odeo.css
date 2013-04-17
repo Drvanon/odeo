@@ -2,23 +2,25 @@
   margin: 10px;
 }
 
-.modal-container {
-  display: none;
-  overflow-y: scroll;
-  position: fixed;
-  top: 0; right: 0;
-  height: 100%; width: 100%; 
-}
-
-#signature {
-  text-align: right;
-}
-
 #title {
   float: left;
+  margin-left: 15px;
 }
 
 #subtitle {
   margin-left: 3px;
   line-height: 2px;
+  float: left;
+}
+
+.modal-body {
+  max-height: 800px;
+}
+
+.right {
+  float: right;
+}
+
+.left {
+  float: left;
 }
