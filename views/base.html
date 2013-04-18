@@ -1,6 +1,6 @@
-{% macro image(link, id, position=None, width=None, height=None) %}
+{% macro image(link, id, class=None) %}
 <a href="#{{ id }}_modal" role="button" data-toggle="modal" class="img_link">
-  <img id="{{ id }}" class="{{ position if position }} img-polaroid" src="{{ link }}">
+  <img id="{{ id }}" class="{{ class if class }} img-polaroid" src="{{ link }}">
 </a>
 
 <div id="{{ id }}_modal" class="modal hide fade" tabindex="-1" role="dialog" 
