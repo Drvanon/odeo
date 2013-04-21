@@ -4,7 +4,11 @@
 
 #title {
   float: left;
-  margin-left: 15px;
+  margin-left: 60px;
+  margin-top: 15px;
+  margin-bottom: 30px;
+  margin-right: 10px;
+  font-size: 80px;
 }
 
 #subtitle {

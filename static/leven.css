@@ -1,5 +1,29 @@
 #eliza {
   float: left;
-  width: 300px;
+  width: 150px;
+  margin: 5px;
+}
+
+#right150 {
+  float: right;
+  width: 150px;
+  margin: 5px;
+}
+
+#MUexperiment {
+  float: right;
+  width: 150px;
+  margin: 2px;
+}
+
+#alanine{
+  float: left;
+  width: 150px;
+  margin: 2px;
+}
+
+#DNA {
+  float: right;
+  width: 150px;
   margin: 2px;
 }

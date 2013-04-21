@@ -1,4 +1,11 @@
-#pasteur {
+#right200 {
   width: 200px;
   float: right;
 }
+
+#left150 {
+  width: 150px;
+  float: left;
+}
+
+

@@ -40,12 +40,12 @@ def leven():
     return {}
 
 @route('/fossielen')
-@view('base.html')
+@view('fossielen.html')
 def fossielen():
     return {}
 
 @route('/cambrium')
-@view('base.html')
+@view('cambrium.html')
 def cambrium():
     return {}
 
