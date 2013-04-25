@@ -2,15 +2,18 @@
 
 from bottle import jinja2_view as view, route, run
 from bottle import static_file, default_app
+import logging
+
+logging.basicConfig(level=logging.DEBUG)
 
 @route('/')
 @view('home.html')
 def home():
     return {}
 
-@route('/eenvoudig')
-@view('base.html')
-def eenvoudig():
+@route('/eenvoudig/robot')
+@view('robot.html')
+def robot():
     return {}
 
 @route('/eenvoudig/cel')
@@ -18,9 +21,9 @@ def eenvoudig():
 def cel():
     return {}
 
-@route('/eenvoudig/onstaan')
-@view('base.html')
-def onstaan():
+@route('/eenvoudig/ontstaan')
+@view('ontstaan.html')
+def ontstaan():
     return {}
 
 @route('/eenvoudig/extremofielen')

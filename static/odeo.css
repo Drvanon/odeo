@@ -1,3 +1,14 @@
+p {
+    font-family: Montserrat;
+}
+
+body {
+}
+
+#container {
+    margin-bottom: 30px;
+}
+
 #heading {
   margin: 10px;
 }
@@ -19,4 +30,13 @@
 
 .modal-body {
   max-height: 800px;
+}
+
+.rechts200 {
+  float: right;
+  width: 200px;
+}
+
+h3 {
+  color: #000
 }

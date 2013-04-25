@@ -1,6 +1,6 @@
-{% macro image(link, id, position=None, width=None, height=None) %}
+{% macro image(link, id, class=None) %}
 <a href="#{{ id }}_modal" role="button" data-toggle="modal" class="img_link">
-  <img id="{{ id }}" class="{{ position if position }} img-polaroid" src="{{ link }}">
+  <img id="{{ id }}" class="{{ class if class }} img-polaroid" src="{{ link }}">
 </a>
 
 <div id="{{ id }}_modal" class="modal hide fade" tabindex="-1" role="dialog" 
@@ -19,6 +19,7 @@
     <script src="/static/bootstrap/bootstrap.min.js"></script>
     <script src="/static/odeo.js"></script>
     <link href="/static/odeo.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
     {% block extrahead %}{% endblock %}
   </head>
   <body>
@@ -31,7 +32,7 @@
       </div>
   </div>
   <div class='row'>
-    <div class="span10 offset3" id="nav">
+    <div  class="container" id="nav">
       <ul class="nav nav-tabs">
         <li id="home"><a href='/'>Home</a></li>
         <li id="spontaan"><a href='/spontaan'>Spontaan ontstaan leven</a></li>
@@ -43,10 +44,13 @@
           </a>
           <ul class="dropdown-menu">
             <li>
+              <a href='/eenvoudig/robot'>robot</a>
+            </li>
+            <li>
               <a href='/eenvoudig/cel'>cel</a>
             </li>
             <li>
-              <a href='/eenvoudig/onstaan'>onstaan van de cel</a>
+              <a href='/eenvoudig/ontstaan'>ontstaan van de cel</a>
             </li>
             <li>
               <a href='/eenvoudig/extremofielen'>extremofielen</a>
@@ -59,7 +63,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="span8 offset4" id="container">{% block content %}{% endblock %}</div>
+    <div class="span9 offset4"id="container">{% block content %}{% endblock %}</div>
   </div>
   </body>
 </html>
