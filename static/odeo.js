@@ -7,7 +7,7 @@ loc = loc.substring(1);
 tabs = ['', 'spontaan', 'leven', 'eenvoudig', 'fossielen', 'cambrium'];
 
 $(function() {
-  var tab, _i, _len, _results;
+  var $body, tab, _i, _len, _results;
 
   _results = [];
   for (_i = 0, _len = tabs.length; _i < _len; _i++) {
@@ -22,13 +22,10 @@ $(function() {
     if (loc.indexOf('eenvoudig') !== -1) {
       $('#eenvoudig').addClass('active');
     }
-    $('.modal').on('hide', function() {
-      $('body').css("overflow", "hidden");
-      return $(this).css("overflow", "scroll");
-    });
-    _results.push($('.modal').on('show', function() {
-      $(this).css("overflow", "hidden");
-      return $('body').css("overflow", "scroll");
+    _results.push($body = $("body").on("shown", ".modal", function() {
+      return $body.addClass("modal-open");
+    }).on("hidden", ".modal", function() {
+      return $body.removeClass("modal-open");
     }));
   }
   return _results;

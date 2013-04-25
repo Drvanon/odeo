@@ -2,9 +2,6 @@ p {
     font-family: Montserrat;
 }
 
-body {
-}
-
 #container {
     margin-bottom: 30px;
 }
@@ -28,10 +25,16 @@ body {
   float: left;
 }
 
-.modal-body {
-  max-height: 800px;
+body.modal-open {
+    overflow-y: hidden;
+    background-color: #FFFFFF
 }
-
+    
+.modal-backdrop .modal-body {
+    max-height:  800px;
+    overflow-y: scroll;
+}
+    
 .rechts200 {
   float: right;
   width: 200px;

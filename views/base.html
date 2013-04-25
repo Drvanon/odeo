@@ -1,4 +1,4 @@
-{% macro image(link, id, class=None) %}
+{% macro image(link, id, text=None, class=None) %}
 <a href="#{{ id }}_modal" role="button" data-toggle="modal" class="img_link">
   <img id="{{ id }}" class="{{ class if class }} img-polaroid" src="{{ link }}">
 </a>
@@ -7,6 +7,7 @@
   aria-labelledby="{{ id }}_modal_label" aria-hidden="true">
   <div class="modal-body">
     <img src="{{ link }}">
+    <p>{{ text  if text}}
   </div>
 </div>
 {% endmacro %}
@@ -22,7 +23,7 @@
     <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
     {% block extrahead %}{% endblock %}
   </head>
-  <body>
+  <body id='main-body'>
   <div class="row">
       <div class="pageheader">
         <h1 id="heading">
