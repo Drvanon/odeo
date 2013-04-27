@@ -47,7 +47,9 @@
         pass = false;
       }
       if (pass) {
-        return $.post('/reageren', $("#reageer").serialize());
+        return $.post('/reageren', $("#reageer").serialize(), function() {
+          return location.reload();
+        });
       }
     });
     return $('#inputReactie').keypress(helpReactie);
