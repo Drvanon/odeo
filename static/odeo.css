@@ -24,17 +24,20 @@ p {
   line-height: 2px;
   float: left;
 }
-
-body.modal-open {
+   
+.modal {
+    width: auto;
+}
+    
+.modal-body {
+    max-height:  540px;
     overflow-y: hidden;
-    background-color: #FFFFFF
 }
-    
-.modal-backdrop .modal-body {
-    max-height:  800px;
-    overflow-y: scroll;
+ 
+.modal-image {
+    max-height: 540px;   
 }
-    
+
 .rechts200 {
   float: right;
   width: 200px;
@@ -42,4 +45,8 @@ body.modal-open {
 
 h3 {
   color: #000
+}
+
+#footer {
+    font-size: 14px;
 }

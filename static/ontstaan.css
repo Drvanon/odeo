@@ -1,0 +1,17 @@
+#atlantis {
+  width: 200px;
+  float: right;
+  margin: 3px;
+}
+
+blockquote{
+ font-size: 20px;
+}
+
+td:nth-child(1) {
+    color: #0B06A1;
+}
+
+td:nth-child(2) {
+    color: #9D0606;
+}

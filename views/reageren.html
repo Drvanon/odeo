@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block extrahead %}
+<script src="/static/reageren.js"></script>
+<link rel='stylesheet' href='/static/reageren.css'>
+{% endblock %}
+{% block content %}
+<h2>Reacties</h2>
+<div class="row">
+    {% if reacties %}
+    <ul class="media-list">
+    {% for reactie in reacties %}
+      <li class="media">
+        <a class="pull-left" href="#">
+          <img class="media-object" src="{{ reactie.image }}">
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">{{ reactie.titel }}</h4>
+          <p>{{ reactie.reactie }}</p>
+          <p> {{ reactie.naam }}, op {{ reactie.datum }}</p>
+        </div>
+      </li>
+    {% endfor %}
+    </ul>
+    {% else %}
+    <div class="alert alert-error">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <h4>Oeps!</h4>
+      Er zijn nog geen reacties geplaatst
+    </div>
+    {% endif %}
+</div>
+<div class="row">
+    <h2> Reageer zelf!</h2>
+    <form id="reageer" class="form-horizontal">
+        <div id="controlgroupNaam"class="control-group">
+            <label class="control-label" for="inputNaam">Naam:</label>
+            <div  class="controls">
+                <input type="text" id="inputNaam" name="naam">
+                <span id="help-naam" class="help-inline"></span>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="inputTitel">Titel:</label>
+            <div class="controls">
+                <input type="text" id="inputTitel" name="titel">
+            </div>
+        </div>
+        <div id="controlgroupReactie" class="control-group">
+            <label class="control-label" for="inputReactie">Reactie:</label>
+            <div class="controls">
+                <textarea rows="3" id="inputReactie" name="reactie"></textarea>
+                <span id="help-reactie" class="help-inline"></span>
+            </div>
+        </div>
+        <button type="submit" class="btn">Post deze reactie</button>
+    </form>
+</div>
+{% endblock %}
