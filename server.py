@@ -2,7 +2,7 @@
 
 from bottle import jinja2_view as view, route, get, post, run
 from bottle import static_file, default_app, request
-import database
+import sys, database
 from datetime import datetime
 
 session = database.Session()
@@ -97,5 +97,9 @@ def server_static(filepath):
     return static_file(filepath, root='./static')    
     
 if __name__ == '__main__':
+    port = 80
+    if len(sys.argv) > 1:
+	if sys.argv[1] == '8080':
+            port = 8080
     application = default_app()
-    run(port=80, debug=True)
+    run(host='0.0.0.0', reloader=True, port=port, debug=True)
