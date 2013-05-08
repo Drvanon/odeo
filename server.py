@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 
 from bottle import jinja2_view as view, route, get, post, run
 from bottle import static_file, default_app, request
