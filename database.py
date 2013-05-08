@@ -15,21 +15,20 @@ class Reactie(Base):
     titel = Column(String(300))
     reactie = Column(String(5000))
     datum = Column(DateTime)
-    image = Column(String)
+    email = Column(String)
     
     def to_dict(self):
         return {'naam': self.naam, 
                 'titel': self.titel,
                 'reactie': self.reactie,
                 'datum': self.datum.strftime("%d %B %Y %I:%M"),
-                'image': self.image
                 }
                 
-    def __init__(self, naam, titel, reactie, image):
+    def __init__(self, naam, titel, reactie, email):
         self.naam = naam
         self.titel = titel
         self.reactie =  reactie
-        self.image = image
+        self.email = email
         self.datum = datetime.today()
     
 Base.metadata.create_all(engine)

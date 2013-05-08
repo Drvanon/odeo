@@ -1,4 +1,16 @@
-#atlantis {
+#robotje {
+  width: 150px;
+  float: left;
+  margin: 10px;
+}
+
+#cell {
   width: 150px;
   float: right;
+  margin: 10px;
+}
+
+
+#cell-clip {
+    float: right;
 }

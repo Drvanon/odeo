@@ -1,25 +1,25 @@
-#eliza {
+#kwal {
   float: left;
-  width: 150px;
+  width: 350px;
   margin: 5px;
 }
 
-#right150 {
+#vissen {
   float: right;
-  width: 150px;
+  width: 250px;
   margin: 5px;
 }
 
-#MUexperiment {
-  float: right;
-  width: 150px;
-  margin: 2px;
+#versteend {
+  float: left;
+  width: 250px;
+  margin: 5px;
 }
 
-#alanine{
-  float: left;
-  width: 150px;
-  margin: 2px;
+#explosie{
+  float: right;
+  width: 200px;
+  margin: 5px;
 }
 
 #DNA {

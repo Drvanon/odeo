@@ -10,9 +10,6 @@
     <ul class="media-list">
     {% for reactie in reacties %}
       <li class="media">
-        <a class="pull-left" href="#">
-          <img class="media-object" src="{{ reactie.image }}">
-        </a>
         <div class="media-body">
           <h4 class="media-heading">{{ reactie.titel }}</h4>
           <p>{{ reactie.reactie }}</p>
@@ -37,6 +34,13 @@
             <div  class="controls">
                 <input type="text" id="inputNaam" name="naam">
                 <span id="help-naam" class="help-inline"></span>
+            </div>
+        </div>
+        <div id="controlgroupEmail" class="control-group">
+            <label class="control-label" for="inputEmail">Email-adres:</label>
+            <div class="controls">
+                <input type="text" id="inputEmail" name="email">
+                <span id="help-email" class="help-inline"></span>
             </div>
         </div>
         <div class="control-group">

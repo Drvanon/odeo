@@ -2,6 +2,15 @@ p {
     font-family: Montserrat;
 }
 
+a p {
+   margin-top: 3px; 
+   margin-bottom: 3px; 
+}
+
+.ondertitel {
+    margin-bottom: 5px;
+}
+
 #container {
     margin-bottom: 30px;
 }
@@ -26,11 +35,11 @@ p {
 }
    
 .modal {
-    width: auto;
+    max-width: 70%;
 }
     
 .modal-body {
-    max-height:  540px;
+    max-height:  80%;
     overflow-y: hidden;
 }
  
@@ -41,6 +50,11 @@ p {
 .rechts200 {
   float: right;
   width: 200px;
+}
+
+.clip {
+    width: 300px;
+    height: 200px; 
 }
 
 h3 {

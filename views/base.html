@@ -7,7 +7,7 @@
   aria-labelledby="{{ id }}_modal_label" aria-hidden="true">
   <div class="modal-body">
     <img class='modal-image' src="{{ link }}">
-    <p>{{ text  if text}}
+    <p class="ondertitel">{{ text  if text}}</p>
   </div>
 </div>
 {% endmacro %}
@@ -36,7 +36,7 @@
     <div  class="container" id="nav">
       <ul class="nav nav-tabs">
         <li id="home"><a href='/'>Home</a></li>
-        <li id="spontaan"><a href='/spontaan'>Spontaan ontstaan leven</a></li>
+        <li id="spontaan"><a href='/spontaan'>Spontaan leven</a></li>
         <li id="leven"><a  href='/leven'>Leven maken</a></li>
         <li id="eenvoudig" class="dropdown">
           <a class='dropdown-toggle' data-toggle="dropdown" href='/eenvoudig'>
@@ -48,7 +48,7 @@
               <a href='/eenvoudig/robot'>robot</a>
             </li>
             <li>
-              <a href='/eenvoudig/cel'>cel</a>
+              <a href='/eenvoudig/cel'>de cel</a>
             </li>
             <li>
               <a href='/eenvoudig/ontstaan'>ontstaan van de cel</a>
@@ -58,8 +58,31 @@
             </li>
           </ul>
         </li>
-        <li id="fossielen"><a href='/fossielen'>Fossielen</a></li>
-        <li id="cambrium"><a href='/cambrium'>Cambrische Explosie</a></li>
+        <li id="fossielen" class="dropdown">
+          <a class='dropdown-toggle' data-toggle="dropdown" href='/fossielen'>
+            Fossielen
+            <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a href='/fossielen/wekedelen'>weke delen</a>
+            </li>
+            <li>
+              <a href='/fossielen/aardlagen'>vorming van aardlagen</a>
+            </li>
+            <li>
+              <a href='/fossielen/verstening'>verstening</a>
+            </li>
+            <li>
+              <a href='/fossielen/leegte'>precambrische leegte</a>
+            </li>
+          </ul>
+        </li>
+        <li id="cambrium"><a href='/cambrium'>Cambrische explosie</a></li>
+        
+        <li id="conclusie"><a href='/conclusie'>Conclusie</a></li>
+        
+        
       </ul>
     </div>
   </div>
@@ -68,7 +91,7 @@
   </div>
   <div id="footer">
     <div class="container">
-        <p class="muted-credit">Deze website is gemaakt met behulp van <a href="http://twitter.github.io/bootstrap">Bootstrap</a>, <a href="http://python.org">Python</a> en Marco en Rob Dorstijn. </p>
+        <p class="muted-credit">Deze website is gemaakt met behulp van <a href="http://twitter.github.io/bootstrap">Bootstrap</a>, <a href="http://python.org">Python</a> door Marco en Rob Dorstijn. </p>
         <p><a href="/reageren">Klik hier om te reageren</a></p>
     </div>
   </div>

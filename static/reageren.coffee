@@ -4,6 +4,10 @@ helpReactie = ->
         $('#help-reactie').text over + ' karakters over.'
         if not $('#controlgroupReactie').hasClass 'info'
             $('#controlgroupReactie').addClass('info')
+        if not $('#controlgroupReactie').hasClass 'error'
+            $('#controlgroupReactie').removeClass('error')
+        if $('#controlgroupReactie').hasClass 'warning'
+            $('#controlgroupReactie').removeClass 'warning'
     if 100 > over > 2
         $('#help-reactie').text 'Pas op! Je hebt nog maar ' + over + ' karakters over.'
         if $('#controlgroupReactie').hasClass 'info'
@@ -14,6 +18,8 @@ helpReactie = ->
         $('#help-reactie').text 'Je hebt te veel karakters gebruikt, versprijdt je reactie over twee posts of kort deze in.'
         if $('#controlgroupReactie').hasClass 'warning'
             $('#controlgroupReactie').removeClass 'warning'
+        if $('#controlgroupReactie').hasClass 'info'
+            $('#controlgroupReactie').removeClass 'info'
         if not $('#controlgroupReactie').hasClass 'error'
             $('#controlgroupReactie').addClass('error')
             
@@ -26,6 +32,10 @@ $ ->
             $('#controlgroupNaam').addClass('error')
             pass = false
         if 5000 - $('#inputReactie').val().length < 2
+            pass = false
+        if not $('#inputEmail').val()
+            $('#help-email').text 'Geef een email.'
+            $('#controlgroupEmail').addclass('error')
             pass = false
         if pass
             $.post(

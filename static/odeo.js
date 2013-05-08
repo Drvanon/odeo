@@ -4,7 +4,7 @@ loc = window.location.pathname;
 
 loc = loc.substring(1);
 
-tabs = ['', 'spontaan', 'leven', 'eenvoudig', 'fossielen', 'cambrium'];
+tabs = ['', 'spontaan', 'leven', 'eenvoudig', 'fossielen', 'cambrium', 'conclusie'];
 
 $(function() {
   var tab, _i, _len, _results;
