@@ -99,7 +99,7 @@ def server_static(filepath):
 if __name__ == '__main__':
     port = 80
     if len(sys.argv) > 1:
-	if sys.argv[1] == '8080':
+        if sys.argv[1] == '8080':
             port = 8080
     application = default_app()
     run(host='0.0.0.0', reloader=True, port=port, debug=True)
