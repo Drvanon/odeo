@@ -92,6 +92,11 @@ def geef_reactie():
     session.add(niewe_reactie)
     session.commit()   
     
+@route('/bronnen')
+@view('bronnen.html')
+def bronnen():
+    return {}
+    
 @route('/static/<filepath:path>')
 def server_static(filepath):
     return static_file(filepath, root='./static')    
