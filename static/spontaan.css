@@ -8,6 +8,10 @@
   float: left;
 }
 
+#kubus-clip {
+    float: left;
+}
+
 #zweepstaart-clip {
     float: right;
 }
