@@ -92,14 +92,16 @@ def geef_reactie():
     session.add(niewe_reactie)
     session.commit()   
     
-@route('/static/<filepath:path>')
-def server_static(filepath):
-    return static_file(filepath, root='./static')    
+@route('/bronnen')
+@view('bronnen.html')
+def bronnen():
+    return {}
     
+app = default_app()
+
 if __name__ == '__main__':
-    port = 80
-    if len(sys.argv) > 1: # TODO: Nicen this up
-        if sys.argv[1] == '8080':
-            port = 8080
-    application = default_app()
-    run(host='0.0.0.0', reloader=True, port=port, debug=True)
+	@route('/static/<filepath:path>')
+	def server_static(filepath):
+	    return static_file(filepath, root='./static')    
+    
+	run(app, host='0.0.0.0', port=8080)
