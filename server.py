@@ -92,6 +92,10 @@ def geef_reactie():
     session.add(niewe_reactie)
     session.commit()   
     
+@route('/favicon.ico')
+def get_favicon():
+    return server_static('./static/favicon.ico')
+    
 @route('/bronnen')
 @view('bronnen.html')
 def bronnen():
@@ -104,4 +108,4 @@ if __name__ == '__main__':
 	def server_static(filepath):
 	    return static_file(filepath, root='./static')    
     
-	run(app, host='0.0.0.0', port=8080)
+	run(app, host='0.0.0.0', port=8080, reloader=True)
