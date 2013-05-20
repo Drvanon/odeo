@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+<url>
+  <loc>http://www.onderzoekdeoorsprong.nl/</loc>
+  <priority>1.0</priority>
+</url>
+<url>
+  <loc>http://www.onderzoekdeoorsprong.nl/spontaan</loc>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://www.onderzoekdeoorsprong.nl/leven</loc>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://www.onderzoekdeoorsprong.nl/eenvoudig/robot</loc>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://www.onderzoekdeoorsprong.nl/eenvoudig/cel</loc>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://www.onderzoekdeoorsprong.nl/eenvoudig/ontstaan</loc>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://www.onderzoekdeoorsprong.nl/eenvoudig/extremofielen</loc>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://www.onderzoekdeoorsprong.nl/fossielen/wekedelen</loc>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://www.onderzoekdeoorsprong.nl/fossielen/aardlagen</loc>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://www.onderzoekdeoorsprong.nl/fossielen/verstening</loc>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://www.onderzoekdeoorsprong.nl/cambrium</loc>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://www.onderzoekdeoorsprong.nl/conclusie</loc>
+  <priority>0.2</priority>
+</url>
+<url>
+  <loc>http://www.onderzoekdeoorsprong.nl/bronnen</loc>
+  <priority>0.1</priority>
+</url>
+</urlset>
