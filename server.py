@@ -97,14 +97,11 @@ def geef_reactie():
 def bronnen():
     return {}
     
-@route('/static/<filepath:path>')
-def server_static(filepath):
-    return static_file(filepath, root='./static')    
-    
+app = default_app()
+
 if __name__ == '__main__':
-    port = 80
-    if len(sys.argv) > 1: # TODO: Nicen this up
-        if sys.argv[1] == '8080':
-            port = 8080
-    application = default_app()
-    run(host='0.0.0.0', reloader=True, port=port, debug=True)
+	@route('/static/<filepath:path>')
+	def server_static(filepath):
+	    return static_file(filepath, root='./static')    
+    
+	run(app, host='0.0.0.0', port=8080)

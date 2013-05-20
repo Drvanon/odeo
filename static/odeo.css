@@ -64,3 +64,8 @@ h3 {
 #footer {
     font-size: 14px;
 }
+
+.row {
+    max-width: 100%;
+    margin-left: 0px;
+}
