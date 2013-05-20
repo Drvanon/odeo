@@ -1,2 +1,4 @@
 reacties.db
 __pychache__
+*env
+*pyc

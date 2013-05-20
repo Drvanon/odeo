@@ -6,7 +6,7 @@
 
   loc = loc.substring(1);
 
-  tabs = ['', 'spontaan', 'leven', 'eenvoudig', 'fossielen', 'cambrium'];
+  tabs = ['', 'spontaan', 'leven', 'eenvoudig', 'fossielen', 'cambrium', 'conclusie'];
 
   $(function() {
     var tab, _i, _len, _results;
@@ -24,7 +24,6 @@
         $('#eenvoudig').addClass('active');
       }
       if (loc.indexOf('fossielen') !== -1) {
-        console.log('Fossielen');
         _results.push($('#fossielen').addClass('active'));
       } else {
         _results.push(void 0);
