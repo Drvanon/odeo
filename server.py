@@ -4,6 +4,7 @@ from bottle import jinja2_view as view, route, get, post, run
 from bottle import static_file, default_app, request
 import sys, database
 from datetime import datetime
+import logging
 
 session = database.Session()
 
@@ -91,17 +92,17 @@ def geef_reactie():
     niewe_reactie = database.Reactie(naam, titel, reactie, email)
     session.add(niewe_reactie)
     session.commit()   
-    
-@route('/favicon.ico')
-def get_favicon():
-    return server_static('./static/favicon.ico')
-    
+
 @route('/bronnen')
 @view('bronnen.html')
 def bronnen():
     return {}
     
 app = default_app()
+app.debug = True
+
+logging.basicConfig()
+logging.info('Started')
 
 if __name__ == '__main__':
 	@route('/static/<filepath:path>')
