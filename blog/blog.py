@@ -25,7 +25,7 @@ def admin():
         else:
             abort(401)
     else:
-        if session['admin']:
+        if session.get('admin'):
             return render_template('admin.html', blogs=get_blogs())
         else:
             return render_template('passpage.html')
@@ -33,7 +33,7 @@ def admin():
 
 @blogpage.route('/admin/new_blog', methods=["POST"])
 def new_blog():
-    if session['admin']:
+    if session.get('admin'):
         new_blog = db.Entry(request.form['title'], request.form['content'])
         db.session.add(new_blog)
         try:

@@ -15,14 +15,5 @@
   </div>
 {% endblock %}
 {% block scripts %}
-<script>
-$(document).ready(function () {
-  $('#new_blog').submit(function (e) {
-    e.preventDefault();
-    $.post('/blog/admin/new_blog', $(this).serialize(), function (data){
-      alert(data.message);
-    });
-  });
-});
-</script>
+<script src="/static/blog/admin.js"></script>
 {% endblock %}
