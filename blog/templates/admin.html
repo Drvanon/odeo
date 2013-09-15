@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+  <div id="container">
+    <form id="new_blog" action="/blog/admin/new_blog" method="POST">
+      <label>
+        Title:
+        <input type="text" name="title">
+      </label>
+      <label>
+        Content:
+        <input type="textarea" name="content">
+      </label>
+      <input type="submit">
+    </form>
+  </div>
+{% endblock %}
+{% block scripts %}
+<script>
+$(document).ready(function () {
+  $('#new_blog').submit(function (e) {
+    e.preventDefault();
+    $.post('/blog/admin/new_blog', $(this).serialize(), function (data){
+      alert(data.message);
+    });
+  });
+});
+</script>
+{% endblock %}
