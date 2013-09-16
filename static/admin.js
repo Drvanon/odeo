@@ -85,6 +85,29 @@ $(document).ready(function () {
       });
 
     }
+    if ($("#select_type").val()=="lead"){
+      var remove = document.createElement("p");
+      $(remove).addClass("remove_el");
+      $(remove).text("remove this element");
+
+      var lab = document.createElement("label");
+      var input = document.createElement("textarea");
+      var div = document.createElement("div");
+
+      input.type = "textarea";
+      input.name = "lead" + count;
+      lab.innerHTML = "Lead:";
+      lab.appendChild(input);
+
+      div.appendChild(lab);
+      div.appendChild(remove);
+      $('#inputField').append(div);
+
+      $('.remove_el').click(function () {
+        $(this).parent().remove();
+        count--;
+      });
+    }
   });
 
   var id = -1;
