@@ -124,6 +124,19 @@ $(document).ready(function () {
   $('#edit_blog').submit(function (e) {
     e.preventDefault();
 
-    $.post('/admin/edit/' + id, $(this).serialize());
+    $.post('/admin/edit/' + id, $(this).serialize(), function (data) {
+      alert(data.message);
+    });
+  });
+
+  $('#remove_blog').click(function (e) {
+    e.preventDefault();
+    $.ajax({
+      url: '/admin/blog/delete/' + id,
+      type: 'DELETE',
+      success: function(data) {
+        alert(data.message);
+      }
+    });
   });
 });

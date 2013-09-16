@@ -81,8 +81,18 @@ def edit_page(id):
 
     entry.title = request.form.get('title')
     entry.content = request.form.get('content')
-    session.commit()
+    db.session.commit()
     return jsonify({"message": "Edit succesfull."})
+
+
+@app.route('/admin/blog/delete/<id>', methods=["DELETE"])
+def delete_blog(id):
+    entry = db.Entry.query.filter_by(id=id).first()
+
+    db.session.delete(entry)
+    db.session.commit()
+    return jsonify({"message": "Remove succesfull."})
+
 
 app.secret_key = '''X\r|R\xe7y\x1bl\xd1\xb2\xf8)
     \xbe\xb7\x1a\x90\x03\xf8=\\\x14SF`'''

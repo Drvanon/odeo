@@ -1,17 +1,19 @@
 {% extends "base.html" %}
 {% block content %}
-<div id="blogs">
-  {% for blog in blogs %}
-    <div class="blog">
-      <h2 class="blog-title">{{ blog.title }}</h2>
-      <div class="blog-content">
-        {{ blog.content|safe }}
+<div id="container">
+  <div id="blogs">
+    {% for blog in blogs %}
+      <div class="blog">
+        <h2 class="blog-title">{{ blog.title }}</h2>
+        <div class="blog-content">
+          {{ blog.content|safe }}
+        </div>
+        <p class="blog-date">
+          {{ blog.date.strftime("%d/%m/%y") }}
+        </p>
       </div>
-      <p class="blog-date">
-        {{ blog.date.strftime("%d/%m/%y") }}
-      </p>
-    </div>
-  {% endfor %}
+    {% endfor %}
+  </div>
 </div>
 {% endblock %}
 {% block scripts %}
