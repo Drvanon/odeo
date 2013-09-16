@@ -34,7 +34,13 @@ def admin():
 @blogpage.route('/admin/new_blog', methods=["POST"])
 def new_blog():
     if session.get('admin'):
-        new_blog = db.Entry(request.form['title'], request.form['content'])
+        content = ''
+        for key in request.form:
+            if key[:6] == 'alinea':
+                content += '<p>' + request.form[key] + '</p>'
+            if key[:5] == 'image':
+                content += '<img src="' + request.form[key] + '"></img>'
+        new_blog = db.Entry(request.form['title'], content)
         db.session.add(new_blog)
         try:
             db.session.commit()

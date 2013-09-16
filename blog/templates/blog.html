@@ -2,13 +2,15 @@
 {% block content %}
 <div id="blogs">
   {% for blog in blogs %}
-    <h2 class="blog-title">{{ blog.title }}</h2>
-    <p class="blog-content">
-      {{ blog.content }}
-    </p>
-    <p class="blog-date">
-      {{ blog.date.strftime("%d/%m/%y") }}
-    </p>
+    <div class="blog">
+      <h2 class="blog-title">{{ blog.title }}</h2>
+      <div class="blog-content">
+        {{ blog.content|safe }}
+      </div>
+      <p class="blog-date">
+        {{ blog.date.strftime("%d/%m/%y") }}
+      </p>
+    </div>
   {% endfor %}
 </div>
 {% endblock %}

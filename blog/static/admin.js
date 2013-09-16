@@ -22,5 +22,16 @@ $(document).ready(function () {
       lab.appendChild(input);
       $('#inputField').append(lab);
     }
+    if ($("#select_type").val()=="image"){
+      images++;
+      var lab = document.createElement("label");
+      var input = document.createElement("input");
+
+      input.type = "textarea";
+      input.name = "image" + images;
+      lab.innerHTML = "image:";
+      lab.appendChild(input);
+      $('#inputField').append(lab);
+    }
   });
 });
