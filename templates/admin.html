@@ -1,16 +1,22 @@
 {% extends "base.html" %}
 {% block content %}
   <div id="container">
+    <h1>Admin Page</h1>
+
     <div id=new>
-      <form id="new_blog" action="/blog/admin/new_blog" method="POST">
+      <h2>New page</h2>
+      <form id="new_blog" action="/admin/new_blog" method="POST">
         <div id='inputField'>
           <label>
             Title:
             <input type="text" name="title">
           </label>
         </div>
-        <input type="submit">
+        <input type="submit" value="Create blog">
       </form>
+
+      <hr>
+
       <form id='new_element'>
         <label>
           Add a new element:
@@ -19,29 +25,36 @@
             <option value="image">Image</option>
           </select>
         </label>
-        <input type="submit">
+        <input type="submit" value="New element">
       </form>
     </div>
+
     <div id="edit">
+      <h2>Edit</h2>
+
+      <span>blog:</span>
       <select id="select_blog">
          {% for blog in blogs %}
          <option value={{ blog.id }}>{{ blog.id }} - {{ blog.title }}</option>
          {% endfor %}
       </select>
-      <form id="edit_blog" action="/blog/admin/edit_blog" method="POST">
+
+      <form id="edit_blog" action="/admin/edit_blog" method="POST">
         <label>
           title:
           <input id=etitle name=title type=text>
         </label>
         <label>
           content:
-          <input id=econtent name=content type=text>
+          <textarea id=econtent name=content></textarea>
         </label>
-        <input type=submit>
+        <input type=submit value="Edit">
       </form>
     </div>
   </div>
 {% endblock %}
+
 {% block scripts %}
-<script src="/static/blog/admin.js"></script>
+<script src="/static/admin.js"></script>
+<link rel=stylesheet href="/static/admin.css"></script>
 {% endblock %}

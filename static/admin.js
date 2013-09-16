@@ -3,7 +3,7 @@ $(document).ready(function () {
 
   $('#new_blog').submit(function (e) {
     e.preventDefault();
-    $.post('/blog/admin/new_blog', $(this).serialize(), function (data){
+    $.post('/admin/new_blog', $(this).serialize(), function (data){
       alert(data.message);
     });
   });
@@ -13,7 +13,7 @@ $(document).ready(function () {
     if($("#select_type").val()=="alinea"){
       count++;
       var lab = document.createElement("label");
-      var input = document.createElement("input");
+      var input = document.createElement("textarea");
 
       var div = document.createElement("div");
 
@@ -90,7 +90,7 @@ $(document).ready(function () {
   var id = -1;
 
   $('#select_blog').change(function (){
-    $.get('/blog/admin/blog/' + $('#select_blog').val(), function (data) {
+    $.get('/admin/blog/' + $('#select_blog').val(), function (data) {
       $('#etitle').val(data.title);
       $('#econtent').val(data.content);
 
@@ -101,6 +101,6 @@ $(document).ready(function () {
   $('#edit_blog').submit(function (e) {
     e.preventDefault();
 
-    $.post('/blog/admin/edit/' + id, $(this).serialize());
+    $.post('/admin/edit/' + id, $(this).serialize());
   });
 });
