@@ -1,25 +1,45 @@
 {% extends "base.html" %}
 {% block content %}
   <div id="container">
-    <form id="new_blog" action="/blog/admin/new_blog" method="POST">
-      <div id='inputField'>
+    <div id=new>
+      <form id="new_blog" action="/blog/admin/new_blog" method="POST">
+        <div id='inputField'>
+          <label>
+            Title:
+            <input type="text" name="title">
+          </label>
+        </div>
+        <input type="submit">
+      </form>
+      <form id='new_element'>
         <label>
-          Title:
-          <input type="text" name="title">
+          Add a new element:
+          <select id="select_type">
+            <option value="alinea">Alinea</option>
+            <option value="image">Image</option>
+          </select>
         </label>
-      </div>
-      <input type="submit">
-    </form>
-    <form id='new_element'>
-      <label>
-        Add a new element:
-        <select id="select_type">
-          <option value="alinea">Alinea</option>
-          <option value="image">Image</option>
-        </select>
-      </label>
-      <input type="submit">
-    </form>
+        <input type="submit">
+      </form>
+    </div>
+    <div id="edit">
+      <select id="select_blog">
+         {% for blog in blogs %}
+         <option value={{ blog.id }}>{{ blog.id }} - {{ blog.title }}</option>
+         {% endfor %}
+      </select>
+      <form id="edit_blog" action="/blog/admin/edit_blog" method="POST">
+        <label>
+          title:
+          <input id=etitle name=title type=text>
+        </label>
+        <label>
+          content:
+          <input id=econtent name=content type=text>
+        </label>
+        <input type=submit>
+      </form>
+    </div>
   </div>
 {% endblock %}
 {% block scripts %}

@@ -35,12 +35,20 @@ def admin():
 def new_blog():
     if session.get('admin'):
         content = ''
-        for key in request.form:
+        form = request.form
+        form2 = request.form
+        for key in form:
             if key[:6] == 'alinea':
-                content += '<p>' + request.form[key] + '</p>'
+                content += '<p>' + form.get(key, None) + '</p>'
             if key[:5] == 'image':
-                content += '<img src="' + request.form[key] + '"></img>'
-        new_blog = db.Entry(request.form['title'], content)
+                content += '<img src="'
+                content += form.get('image' + key[5], None)
+                content += '" style="width: '
+                content += form.get('width' + key[5], None)
+                content += 'px;float: '
+                content += form.get('float' + key[5], None)
+                content += ';"></img>'
+        new_blog = db.Entry(request.form.get('title', None), content)
         db.session.add(new_blog)
         try:
             db.session.commit()
@@ -50,3 +58,21 @@ def new_blog():
         return jsonify({'message': "Succesfully created new blog."})
     else:
         abort(401)
+
+
+@blogpage.route('/admin/blog/<id>')
+def get_page(id):
+    entry = db.Entry.query.filter_by(id=id).first()
+    return jsonify({
+        'title': entry.title, 'content': entry.content,
+        'id': entry.id
+    })
+
+
+@blogpage.route('/admin/edit/<id>', methods=["POST"])
+def edit_page(id):
+    entry = db.Entry.query.filter_by(id=id).first()
+
+    entry.title = request.form.get('title')
+    entry.content = request.form.get('content')
+    return jsonify({"message": "Edit succesfull."})
