@@ -2,13 +2,21 @@
 {% block content %}
   <div id="container">
     <form id="new_blog" action="/blog/admin/new_blog" method="POST">
+      <div id='inputField'>
+        <label>
+          Title:
+          <input type="text" name="title">
+        </label>
+      </div>
+      <input type="submit">
+    </form>
+    <form id='new_element'>
       <label>
-        Title:
-        <input type="text" name="title">
-      </label>
-      <label>
-        Content:
-        <input type="textarea" name="content">
+        Add a new element:
+        <select id="select_type">
+          <option value="alinea">Alinea</option>
+          <option value="image">Image</option>
+        </select>
       </label>
       <input type="submit">
     </form>
