@@ -8,14 +8,14 @@
         <div class="blog-content">
           {{ blog.content|safe }}
         </div>
-        <p class="blog-date">
+        <time>
           {{ blog.date.strftime("%d/%m/%y") }}
-        </p>
+        </time>
       </div>
     {% endfor %}
   </div>
 </div>
 {% endblock %}
 {% block scripts %}
-  <link rel=stylesheet href=/static/blog.css>
+  <link rel="stylesheet/less" type="text/css" href="/static/blog.less" />
 {% endblock %}

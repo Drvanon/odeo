@@ -17,7 +17,7 @@ $(document).ready(function () {
 
       var div = document.createElement("div");
 
-      var remove = document.createElement("p");
+      var remove = document.createElement("button");
       $(remove).addClass("remove_el");
       $(remove).text("remove this element");
 
@@ -28,6 +28,7 @@ $(document).ready(function () {
 
       div.appendChild(lab);
       div.appendChild(remove);
+      $(div).addClass('el');
 
       $('#inputField').append(div);
 
@@ -53,7 +54,7 @@ $(document).ready(function () {
       var labid = document.createElement("label");
       var inputid = document.createElement("input");
 
-      var remove = document.createElement("p");
+      var remove = document.createElement("button");
       $(remove).addClass("remove_el");
       $(remove).text("remove this element");
 
@@ -78,6 +79,7 @@ $(document).ready(function () {
       div.appendChild(labwidth);
       div.appendChild(remove);
       $('#inputField').append(div);
+      $(div).addClass('el');
 
       $('.remove_el').click(function () {
         $(this).parent().remove();
@@ -86,7 +88,7 @@ $(document).ready(function () {
 
     }
     if ($("#select_type").val()=="lead"){
-      var remove = document.createElement("p");
+      var remove = document.createElement("button");
       $(remove).addClass("remove_el");
       $(remove).text("remove this element");
 
@@ -101,6 +103,7 @@ $(document).ready(function () {
 
       div.appendChild(lab);
       div.appendChild(remove);
+      $(div).addClass('el');
       $('#inputField').append(div);
 
       $('.remove_el').click(function () {

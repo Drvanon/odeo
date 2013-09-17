@@ -2,11 +2,15 @@
 <html>
   <head>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    {% block scripts %}
+    {% endblock %}
+    <script src="/static/less.min.js"></script>
   </head>
   <body>
+    <header>
+      <h1>OdeO</h1>
+    </header>
     {% block content %}
-    {% endblock %}
-    {% block scripts %}
     {% endblock %}
   </body>
 </html>
