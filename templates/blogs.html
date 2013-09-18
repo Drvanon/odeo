@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+    <div id="blogs">
+      {% for blog in blogs %}
+        <div class="blog">
+          <a href="/blog/{{ blog.id }}"><h2 class="blog-title">{{ blog.title }}</h2></a>
+          <div class="blog-content">
+            {{ blog.content|safe }}
+          </div>
+          <div class='timecontainer'>
+            <time>
+              {{ blog.date.strftime("%d/%m/%y") }}
+            </time>
+          </div>
+        </div>
+        {% if not loop.last %}
+        <hr>
+        {% endif %}
+      {% endfor %}
+    </div>
+{% endblock %}
+{% block scripts %}
+  <link rel="stylesheet/less" type="text/css" href="/static/blog.less" />
+{% endblock %}

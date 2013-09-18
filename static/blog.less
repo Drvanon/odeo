@@ -1,0 +1,142 @@
+@import url(http://fonts.googleapis.com/css?family=Happy+Monkey&subset=latin,latin-ext);
+@import url(http://fonts.googleapis.com/css?family=Roboto+Slab:700&subset=latin,latin-ext);
+@import url(http://fonts.googleapis.com/css?family=Peralta);
+@import url(http://fonts.googleapis.com/css?family=Rosario:400,400italic);
+
+@cbod:  #E8D0A9;
+@cblog: #6D929B;
+@ctext: #C1DAD6;
+
+@cstrong: @ctext;
+@chead: @ctext;
+
+.box (@radius: 5px, @pad: 20px) {
+  background-color: @cblog;
+  padding: @pad;
+  -moz-border-radius: @radius; border-radius: @radius;
+  margin: 10px;
+  box-shadow: 3px 3px 5px #888;
+}
+
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+header, section, footer, aside, nav, article, hgroup {
+  display: block;
+}
+
+body {
+  background-color: @cbod;
+  width: 100%;
+
+  display: -webkit-box;
+  -webkit-box-pack: center;
+}
+
+#container {
+  max-width: 1000px;
+  margin: 20px 0px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-flex: 1;
+}
+
+#main {
+  display: -webkit-box;
+  -webkit-box-orient: center;
+}
+
+#blogs {
+  .box(20px);
+  display: block;
+
+  width: 60%;
+  padding-bottom: 40px;
+  margin: 0px;
+  margin-top: 10px;
+}
+
+.blog {
+  width: 100%;
+}
+
+#header {
+  height: auto;
+  overflow: hidden;
+}
+
+header {
+  height: 55px;
+  position: relative;
+  left: -3px;
+  top: -10px;
+}
+
+h1 {
+  white-space: nowrap;
+  overflow: hidden;
+  font-family: Peralta, cursive;
+  font-size: 70px;
+  color: @cblog;
+}
+
+a {
+  text-decoration: none;
+}
+
+h2 {
+  font-family: Happy Monkey;
+  color: @chead;
+}
+
+p {
+  margin: 0px;
+  margin-top: 2px;
+  font-family: Rosario, sans-serif;
+  color: @ctext;
+}
+
+#blogs > hr {
+  margin: 5px 0 3px 0;
+  border: none;
+  border-top: solid 1px @ctext;
+}
+
+strong {
+  font-family: 'Roboto Slab', serif;
+  color: @cstrong;
+}
+
+.timecontainer {
+  text-align: right;
+}
+
+time {
+  font-size: 15px;
+  color: @ctext;
+}
+
+#news {
+  .box(10px, 15px);
+  height: 100%;
+  margin: 10px;
+}
+
+li a span {
+  list-style: none;
+  color: @cstrong;
+  font-family: 'Roboto Slab', serif;
+}
+
+li {
+  list-style: none;
+  margin: 0;
+}
+
+nav {
+  .box(10px, 15px);
+  font-size: 20px;
+  display: inline-block;
+}
