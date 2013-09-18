@@ -7,10 +7,32 @@
     <script src="/static/less.min.js"></script>
   </head>
   <body>
-    <header>
-      <h1>OdeO</h1>
-    </header>
-    {% block content %}
-    {% endblock %}
+    <div id="container">
+      <div id="header">
+        <header>
+          <a href="/"><h1>OdeO</h1></a>
+        </header>
+      </div>
+      <div id="main">
+        <nav>
+          <ul>
+            <li><a href='/'><span>Home</span></a></li>
+            <li><a href='/about'><span>About</span></a></li>
+          </ul>
+        </nav>
+        {% block content %}
+        {% endblock %}
+        <aside id="news">
+          <h2 id="News_header">New</h2>
+          <ol>
+            {% for item in news %}
+            {% if not loop.index > 4 %}
+            <li><a href="/blog/{{ item.id }}"><span>{{ item.title }}</span></a></li>
+            {% endif %}
+            {% endfor %}
+          </ol>
+        </aside>
+      </div>
+    </div>
   </body>
 </html>

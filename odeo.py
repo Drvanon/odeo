@@ -13,9 +13,22 @@ def get_blogs():
     return db.Entry.query.all()
 
 
+def get_news():
+    return db.Entry.query.order_by(db.Entry.id.desc())
+
+
 @app.route('/')
 def index():
-    return render_template('blog.html', blogs=get_blogs())
+    return render_template('blogs.html', news=get_news(), blogs=get_blogs())
+
+
+@app.route('/blog/<int:id>')
+def blog(id):
+    blog = db.Entry.query.filter_by(id=id).first()
+    if not blog:
+        abort(404)
+    else:
+        return render_template('blog.html', news=get_news(), blog=blog)
 
 
 @app.route('/admin', methods=["POST", "GET"])
