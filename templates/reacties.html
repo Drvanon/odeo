@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+  <div id="blogs">
+    {% for reactie in reacties %}
+    <div class="blog">
+      <h2 class="title">{{ reactie.title }}</h2>
+      <p class="content">{{ reactie.content }}</h2>
+      <p class="author">{{ reactie.author }}</p>
+      <time>{{ reactie.date }}</time>
+    </div>
+    {% else %}
+    <div class="blog">
+      <h2>Er zijn nog geen reacties geplaatst.</h2>
+    </div>
+    {% endfor %}
+  </div>
+{% endblock %}
+{% block scripts %}
+  <link rel="stylesheet/less" type="text/css" href="/static/blog.less" />
+{% endblock %}

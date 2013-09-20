@@ -26,5 +26,21 @@ class Entry(Base):
         self.date = datetime.now()
 
 
+class Reaction(Base):
+    __tablename__ = 'reactions'
+
+    id = Column(Integer, primary_key=True)
+    title = Column(String(100))
+    content = Column(String())
+    author = Column(String(200))
+    date = Column(DateTime)
+
+    def __init__(self, title, content, author):
+        self.title = title
+        self.content = content
+        self.author = author
+        self.date = datetime.now()
+
+
 def init_db():
     Base.metadata.create_all(bind=engine)

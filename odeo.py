@@ -17,6 +17,10 @@ def get_news():
     return db.Entry.query.order_by(db.Entry.id.desc())
 
 
+def get_reacties():
+    return db.Reaction.query.all()
+
+
 @app.route('/')
 def index():
     return render_template('blogs.html', news=get_news(), blogs=get_blogs())
@@ -29,6 +33,12 @@ def blog(id):
         abort(404)
     else:
         return render_template('blog.html', news=get_news(), blog=blog)
+
+
+@app.route('/reacties')
+def reacties():
+    return render_template(
+        'reacties.html', news=get_news(), reacties=get_reacties())
 
 
 @app.route('/admin', methods=["POST", "GET"])
