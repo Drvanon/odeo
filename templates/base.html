@@ -1,38 +1,47 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    {% block scripts %}
-    {% endblock %}
-    <script src="/static/less.min.js"></script>
-  </head>
-  <body>
-    <div id="container">
-      <div id="header">
-        <header>
-          <a href="/"><h1>OdeO</h1></a>
-        </header>
-      </div>
-      <div id="main">
-        <nav>
-          <ul>
-            <li><a href='/'><span>Home</span></a></li>
-            <li><a href='/about'><span>About</span></a></li>
-          </ul>
-        </nav>
-        {% block content %}
-        {% endblock %}
-        <aside id="news">
-          <h2 id="News_header">New</h2>
-          <ol>
-            {% for item in news %}
-            {% if not loop.index > 4 %}
-            <li><a href="/blog/{{ item.id }}"><span>{{ item.title }}</span></a></li>
-            {% endif %}
-            {% endfor %}
-          </ol>
-        </aside>
-      </div>
+<head>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+{% block scripts %}
+{% endblock %}
+<script src="/static/less.min.js"></script>
+</head>
+<body>
+<div id='reageer'>
+  <a href='/reacties'>
+    <div id='reageer-wrapper'>
+      <p id='reageer-text'>Reageer</p>
     </div>
-  </body>
+  </a>
+</div>
+<div id="container">
+  <div id="header">
+    <header>
+      <a href="/"><h1>OdeO</h1></a>
+      <h2>onderzoek de oorsprong</h2>
+    </header>
+  </div>
+  <div id="main">
+    <nav>
+      <ul>
+        <li><a href='/'><span>Home</span></a></li>
+        <li><a href='/about'><span>About</span></a></li>
+        <li><a href='/reacties'><span>Reageren</span></a></li>
+      </ul>
+    </nav>
+    {% block content %}
+    {% endblock %}
+    <aside id="news">
+      <h2 id="News_header">New</h2>
+      <ol>
+        {% for item in news %}
+        {% if not loop.index > 4 %}
+        <li><a href="/blog/{{ item.id }}"><span>{{ item.title }}</span></a></li>
+        {% endif %}
+        {% endfor %}
+      </ol>
+    </aside>
+  </div>
+</div>
+</body>
 </html>
