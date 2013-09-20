@@ -1,0 +1,49 @@
+@clight: #C1DAD6;
+@radius: 5px;
+@cdark: #6D929B;
+
+form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+
+  p {
+    margin: 0px;
+    padding: 0px;
+    font-size: 20px;
+  }
+
+  label {
+    display: flex;
+    flex-direction: row;
+    margin: 2px;
+
+    input {
+      background-color: @clight;
+      -moz-border-radius: @radius; border-radius: @radius;
+      border: none;
+      margin-left: 2px;
+      color: @cdark;
+      padding: 2px;
+    }
+  }
+}
+
+#submit {
+  @nradius: 5px;
+  background-color: @clight;
+  -moz-border-radius: @nradius; border-radius: @nradius;
+  border: none;
+  margin-top: 2px;
+  font-size: 20px;
+  color: @cdark;
+  width: 150px;
+}
+
+textarea{
+  background-color: @clight;
+  -moz-border-radius: @radius; border-radius: @radius;
+  border: none;
+  color: @cdark;
+  padding: 2px;
+}
