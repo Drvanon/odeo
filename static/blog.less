@@ -32,21 +32,20 @@ body {
   background-color: @cbod;
   width: 100%;
 
-  display: -webkit-box;
-  -webkit-box-pack: center;
+  display: flex;
+  justify-content: center;
 }
 
 #container {
+  display: flex;
+  flex-direction: column;
   max-width: 1000px;
   margin: 20px 0px;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-box-flex: 1;
 }
 
 #main {
-  display: -webkit-box;
-  -webkit-box-orient: center;
+  display: flex;
+  align-self: center;
 }
 
 #blogs {
@@ -88,8 +87,8 @@ header {
 }
 
 header {
-  display: -wekit-box;
-  -webkit-box-orient: vertical;
+  display: flex;
+  flex-direction: row;
 
   h1 {
     white-space: nowrap;
@@ -161,5 +160,10 @@ li {
 nav {
   .box(10px, 15px);
   font-size: 20px;
-  display: inline-block;
+  height: 100%;
+}
+
+object{
+  padding: 10px 10px 10px;
+  float: left;
 }
