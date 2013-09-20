@@ -41,6 +41,18 @@ def reacties():
         'reacties.html', news=get_news(), reacties=get_reacties())
 
 
+@app.route('/reacties/new_reaction', methods=["POST"])
+def new_reaction():
+    new_reac = db.Reaction(
+        request.form.get('title'),
+        request.form.get('content'),
+        request.form.get('author')
+    )
+    db.session.add(new_reac)
+    db.session.commit()
+    return jsonify({"message": "Succesfully created reaction."})
+
+
 @app.route('/admin', methods=["POST", "GET"])
 def admin():
     if request.method == "POST":

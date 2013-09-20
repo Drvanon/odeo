@@ -1,12 +1,29 @@
 {% extends "base.html" %}
 {% block content %}
   <div id="blogs">
+    <div id="reactbox">
+      <form id="reaction-form" action="/reacties/new_reaction">
+        <label>
+          <p>Titel:</p>
+          <input name="title">
+        </label>
+        <label>
+          <p>Reactie:</p>
+          <textarea name="content"></textarea>
+        </label>
+        <label>
+          <p>Auteur:</p>
+          <input name="author">
+        </label>
+        <input id="submit" value="verstuur" type="submit">
+      </form>
+    </div>
     {% for reactie in reacties %}
     <div class="blog">
       <h2 class="title">{{ reactie.title }}</h2>
       <p class="content">{{ reactie.content }}</h2>
       <p class="author">{{ reactie.author }}</p>
-      <time>{{ reactie.date }}</time>
+      <time>{{ reactie.date.strftime("%d/%m/%y") }}</time>
     </div>
     {% else %}
     <div class="blog">
@@ -17,4 +34,6 @@
 {% endblock %}
 {% block scripts %}
   <link rel="stylesheet/less" type="text/css" href="/static/blog.less" />
+  <link rel="stylesheet/less" type="text/css" href="/static/reacties.less" />
+  <script src="/static/reacties.js"></script>
 {% endblock %}
