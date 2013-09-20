@@ -89,6 +89,7 @@ def new_blog():
                 content += form.get('lead' + key[4], None)
                 content += '</strong>'
             elif key[:-1] == 'video':
+                print(form.get(key))
                 content += form.get(key)
 
         new_blog = db.Entry(request.form.get('title', None), content)
