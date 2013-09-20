@@ -1,6 +1,13 @@
 $(document).ready(function () {
   var count = 0;
 
+  $.get('/admin/blog/' + $('#select_blog').val(), function (data) {
+      $('#etitle').val(data.title);
+      $('#econtent').val(data.content);
+
+      id = data.id;
+    });
+
   $('#new_blog').submit(function (e) {
     e.preventDefault();
     $.post('/admin/new_blog', $(this).serialize(), function (data){
@@ -121,6 +128,29 @@ $(document).ready(function () {
 
       input.name = "video" + count;
       lab.innerHTML = "Video:";
+      lab.appendChild(input);
+
+      div.appendChild(lab);
+      div.appendChild(remove);
+      $(div).addClass('el');
+      $('#inputField').append(div);
+
+      $('.remove_el').click(function () {
+        $(this).parent().remove();
+        count--;
+      });
+    }
+    if ($("#select_type").val()=="source") {
+      var remove = document.createElement("button");
+      $(remove).addClass("remove_el");
+      $(remove).text("remove this element");
+
+      var lab = document.createElement("label");
+      var input = document.createElement("input");
+      var div = document.createElement("div");
+
+      input.name = "source" + count;
+      lab.innerHTML = "source:";
       lab.appendChild(input);
 
       div.appendChild(lab);
