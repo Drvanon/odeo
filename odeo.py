@@ -74,9 +74,9 @@ def new_blog():
         content = ''
         form = request.form
         for key in form:
-            if key[:6] == 'alinea':
+            if key[:-1] == 'alinea':
                 content += '<p>' + form.get(key, None) + '</p>'
-            elif key[:5] == 'image':
+            elif key[:-1] == 'image':
                 content += '<img src="'
                 content += form.get('image' + key[5], None)
                 content += '" style="width: '
@@ -84,10 +84,12 @@ def new_blog():
                 content += 'px;float: '
                 content += form.get('float' + key[5], None)
                 content += ';"></img>'
-            elif key[:4] == 'lead':
+            elif key[:-1] == 'lead':
                 content += '<strong class="lead">'
                 content += form.get('lead' + key[4], None)
                 content += '</strong>'
+            elif key[:-1] == 'video':
+                content += form.get(key)
 
         new_blog = db.Entry(request.form.get('title', None), content)
         db.session.add(new_blog)

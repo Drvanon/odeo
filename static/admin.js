@@ -96,9 +96,31 @@ $(document).ready(function () {
       var input = document.createElement("textarea");
       var div = document.createElement("div");
 
-      input.type = "textarea";
       input.name = "lead" + count;
       lab.innerHTML = "Lead:";
+      lab.appendChild(input);
+
+      div.appendChild(lab);
+      div.appendChild(remove);
+      $(div).addClass('el');
+      $('#inputField').append(div);
+
+      $('.remove_el').click(function () {
+        $(this).parent().remove();
+        count--;
+      });
+    }
+    if ($("#select_type").val()=="video") {
+      var remove = document.createElement("button");
+      $(remove).addClass("remove_el");
+      $(remove).text("remove this element");
+
+      var lab = document.createElement("label");
+      var input = document.createElement("input");
+      var div = document.createElement("div");
+
+      input.name = "video" + count;
+      lab.innerHTML = "Video:";
       lab.appendChild(input);
 
       div.appendChild(lab);
