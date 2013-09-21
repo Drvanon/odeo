@@ -18,6 +18,14 @@
   box-shadow: 3px 3px 5px #888;
 }
 
+.rotate (@degrees: 45deg) {
+   -webkit-transform: rotate(@degrees);
+   -moz-transform:    rotate(@degrees);
+   -ms-transform:     rotate(@degrees);
+   -o-transform:      rotate(@degrees);
+   transform:         rotate(@degrees);
+}
+
 * {
   margin: 0px;
   padding: 0px;
@@ -79,8 +87,8 @@ header {
   position: absolute;
   right: -100px;
   top: 10px;
-  -webkit-transform: rotate(45deg);
   padding: 8px 100px 8px 100px;
+  .rotate();
 
   p {
     font-family: 'Roboto Slab', serif;
@@ -114,6 +122,11 @@ h2 {
   color: @chead;
 }
 
+h3 {
+  color: @chead;
+  margin-top: 5px;
+}
+
 p {
   margin: 0px;
   margin-top: 2px;
@@ -143,7 +156,6 @@ time {
 
 #news {
   .box(10px, 15px);
-  height: 100%;
   margin: 10px;
 }
 
@@ -161,7 +173,6 @@ li {
 nav {
   .box(10px, 15px);
   font-size: 20px;
-  height: 100%;
   padding-right: 25px;
 }
 

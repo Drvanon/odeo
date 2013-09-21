@@ -53,6 +53,11 @@ def new_reaction():
     return jsonify({"message": "Succesfully created reaction."})
 
 
+@app.route('/about')
+def about():
+    return render_template('about.html', news=get_news())
+
+
 @app.route('/admin', methods=["POST", "GET"])
 def admin():
     if request.method == "POST":
