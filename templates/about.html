@@ -2,20 +2,7 @@
 {% block content %}
 <div id="blogs">
   <div class="blog">
-    <h2>About</h2>
-    <h3>Rob Dorstijn</h3>
-    <p>
-    Rob is de designer, systeembeheerder en geestelijk moeder van deze site. Hij
-    doet momenteel VWO5 en is al ruim 2 jaar veel bezig met webdevelopment en
-    programmeren.
-    </p>
-    <h3>Marco Dorstijn</h3>
-    <p>
-    Marco is de schrijver, creative director en geestelijk vader van deze site.
-    Hij werkt sinds 1996 als scheikunde leraar na zijn studie farmacologie aan
-    de VU Amsterdam te hebben afgerond. Hij is onder meer geintresseerd in de
-    vorming van aardlagen en het ontstaan van de aarde.
-    </p>
+    {{ content | safe }}
   </div>
 </div>
 {% endblock %}

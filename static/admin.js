@@ -8,6 +8,10 @@ $(document).ready(function () {
       id = data.id;
     });
 
+  $.get('/admin/about', function (data) {
+    $('#acontent').text(data.content);
+  });
+
   $('#new_blog').submit(function (e) {
     e.preventDefault();
     $.post('/admin/new_blog', $(this).serialize(), function (data){
@@ -194,4 +198,11 @@ $(document).ready(function () {
       }
     });
   });
+
+  $('#about').submit(function (e) {
+    e.preventDefault();
+    $.post('/admin/about/edit', {"content": $('#acontent').val()}, function (data) {
+      alert(data.message);
+    });
+ });
 });

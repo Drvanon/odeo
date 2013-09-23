@@ -7,14 +7,8 @@
 <script src="/static/less.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
-  if (!navigator.userAgent.match(/mozilla/i) &&
-      ! navigator.userAgent.match(/webkit/i) &&
-      !(window.opera && window.opera.buildNumber)
-     ){
-    alert('You are not using a modern browser please download google chrome for best experiences.');
-  }
-  if (navigator.userAgent.match(/webkit/i)) {
-    $('nav, #news').css('height', '100%');
+  if (navigator.appName == 'Microsoft Internet Explorer'){
+    window.location = 'http://google.com/chrome';
   }
 });
 </script>

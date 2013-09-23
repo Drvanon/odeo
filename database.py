@@ -26,6 +26,16 @@ class Entry(Base):
         self.date = datetime.now()
 
 
+class About(Base):
+    __tablename__ = 'abouts'
+
+    id = Column(Integer, primary_key=True)
+    content = Column(String())
+
+    def __init__(self, content):
+        self.content = content
+
+
 class Reaction(Base):
     __tablename__ = 'reactions'
 
