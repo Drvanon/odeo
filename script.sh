@@ -1,3 +1,3 @@
 #! /bin/bash
-source venv/bin/activate
-exec gunicorn -w 4 -b 5000 odeo:app
+source /home/ubuntu/odeo/venv/bin/activate
+exec python /home/ubuntu/odeo/odeo.py
