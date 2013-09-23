@@ -10,10 +10,15 @@
 @cstrong: @ctext;
 @chead: @ctext;
 
+.flex(){
+  display: flex;
+  display: -webkit-flex;
+}
+
 .box (@radius: 5px, @pad: 20px) {
   background-color: @cblog;
   padding: @pad;
-  -moz-border-radius: @radius; border-radius: @radius;
+  border-radius: @radius;
   margin: 10px;
   box-shadow: 3px 3px 5px #888;
 }
@@ -40,20 +45,22 @@ body {
   background-color: @cbod;
   width: 100%;
 
-  display: flex;
+  .flex();
   justify-content: center;
+  -webkit-justify-content: center;
 }
 
 #container {
-  display: flex;
+  .flex();
   flex-direction: column;
   max-width: 1000px;
   margin: 20px 0px;
 }
 
 #main {
-  display: flex;
+  .flex();
   align-self: center;
+  -webkit-align-self: center;
   min-width: 600px;
 }
 
@@ -72,8 +79,9 @@ body {
 }
 
 header {
-  display: flex;
+  .flex();
   flex-direction: row;
+  -webkit-flex-direction: row;
   width: auto;
 }
 
@@ -96,8 +104,9 @@ header {
 }
 
 header {
-  display: flex;
+  .flex();
   flex-direction: row;
+  -webkit-flex-direction: row;
 
   h1 {
     white-space: nowrap;
@@ -176,7 +185,7 @@ nav {
   padding-right: 25px;
 }
 
-object {
+iframe {
   padding: 10px 10px 10px;
   float: left;
 }
