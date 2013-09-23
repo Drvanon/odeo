@@ -21,6 +21,10 @@ def get_reacties():
     return db.Reaction.query.all()
 
 
+def get_about():
+    return db.About.query.first()
+
+
 @app.route('/')
 def index():
     return render_template('blogs.html', news=get_news(), blogs=get_blogs())
@@ -55,7 +59,9 @@ def new_reaction():
 
 @app.route('/about')
 def about():
-    return render_template('about.html', news=get_news())
+    print(get_about())
+    content = get_about().content
+    return render_template('about.html', content=content, news=get_news())
 
 
 @app.route('/admin', methods=["POST", "GET"])
@@ -90,9 +96,9 @@ def new_blog():
                 content += form.get('float' + key[5], None)
                 content += ';"></img>'
             elif key[:-1] == 'lead':
-                content += '<strong class="lead">'
+                content += '<div class="strongcontainer"><strong class="lead">'
                 content += form.get('lead' + key[4], None)
-                content += '</strong>'
+                content += '</strong></div>'
             elif key[:-1] == 'video':
                 content += form.get(key)
             elif key[:-1] == 'source':
@@ -140,7 +146,24 @@ def delete_blog(id):
     return jsonify({"message": "Remove succesfull."})
 
 
+@app.route('/admin/about')
+def rget_about():
+    about = db.About.query.first()
+
+    return jsonify({"content": about.content})
+
+
+@app.route('/admin/about/edit', methods=["POST"])
+def edit_about():
+    about = get_about()
+
+    content = request.form.get('content')
+    about.content = content
+    db.session.commit()
+    return jsonify({"message": "Edit succesfull."})
+
+
 app.secret_key = '''X\r|R\xe7y\x1bl\xd1\xb2\xf8)
     \xbe\xb7\x1a\x90\x03\xf8=\\\x14SF`'''
 
-app.run(host="localhost")
+app.run(debug=True)
