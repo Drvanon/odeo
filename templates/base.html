@@ -16,13 +16,6 @@
 {% block scripts %}
 {% endblock %}
 <script src="/static/less.min.js"></script>
-<script type="text/javascript">
-$(document).ready(function() {
-  if (navigator.appName == 'Microsoft Internet Explorer'){
-    window.location = 'http://google.com/chrome';
-  }
-});
-</script>
 </head>
 <body>
 <div id='reageer'>
@@ -44,6 +37,7 @@ $(document).ready(function() {
     </header>
   </div>
   <div id="main">
+    <div class="sidecontainer">
     <nav>
       <ul>
         <li><a href='/'><span>Home</span></a></li>
@@ -52,18 +46,21 @@ $(document).ready(function() {
         <li><a href='/reacties'><span>Reageren</span></a></li>
       </ul>
     </nav>
+  </div>
     {% block content %}
     {% endblock %}
-    <aside id="news">
-      <h2 id="News_header">New</h2>
-      <ol>
-        {% for item in news %}
-        {% if not loop.index > 4 %}
-        <li><a href="/blog/{{ item.id }}"><span>{{ item.title }}</span></a></li>
-        {% endif %}
-        {% endfor %}
-      </ol>
-    </aside>
+    <div id="sidecontainer">
+      <aside id="news">
+        <h2 id="News_header">New</h2>
+        <ol>
+          {% for item in news %}
+          {% if not loop.index > 4 %}
+          <li><a href="/blog/{{ item.id }}"><span>{{ item.title }}</span></a></li>
+          {% endif %}
+          {% endfor %}
+        </ol>
+      </aside>
+    </div>
   </div>
 </div>
 </body>
