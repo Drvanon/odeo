@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="google-site-verification" content="nrafkCdZXKovv-pjyDkIdsLxkW80_ABek00gpTeS438" />
+<!-- jquery --!>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+<!-- Analytics --!>
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -13,11 +15,18 @@
               ga('send', 'pageview');
 
 </script>
+<!-- img --!>
+<script src="static/lightbox/js/lightbox-2.6.min.js"></script>
+<link href="static/lightbox/css/lightbox.css" rel="stylesheet" />
+
 {% block scripts %}
 {% endblock %}
+
+<!-- less --!>
 <script src="/static/less.min.js"></script>
 </head>
 <body>
+
 <div id='reageer'>
   <a href='/reacties'>
     <div id='reageer-wrapper'>
@@ -25,7 +34,9 @@
     </div>
   </a>
 </div>
+
 <div id="container">
+
   <div id="header">
     <header>
       <a href="/"><h1>OdeO</h1></a>
@@ -36,19 +47,22 @@
       </div>
     </header>
   </div>
+
   <div id="main">
     <div class="sidecontainer">
-    <nav>
-      <ul>
-        <li><a href='/'><span>Home</span></a></li>
-        <li><a href='/about'><span>About</span></a></li>
-        <li><a href='http://www.pinterest.com/dorstijn/boards/'><span>Pinterest</span></a></li>
-        <li><a href='/reacties'><span>Reageren</span></a></li>
-      </ul>
-    </nav>
-  </div>
+      <nav>
+        <ul>
+          <li><a href='/'><span>Home</span></a></li>
+          <li><a href='/about'><span>About</span></a></li>
+          <li><a href='http://www.pinterest.com/dorstijn/boards/'><span>Pinterest</span></a></li>
+          <li><a href='/reacties'><span>Reageren</span></a></li>
+        </ul>
+      </nav>
+    </div>
+
     {% block content %}
     {% endblock %}
+
     <div id="sidecontainer">
       <aside id="news">
         <h2 id="News_header">New</h2>
@@ -61,6 +75,7 @@
         </ol>
       </aside>
     </div>
+
   </div>
 </div>
 </body>

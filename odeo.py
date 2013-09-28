@@ -88,13 +88,16 @@ def new_blog():
             if key[:-1] == 'alinea':
                 content += '<p>' + form.get(key, None) + '</p>'
             elif key[:-1] == 'image':
+                content += '<a data-lightbox="image-1" href="'
+                content += form.get('image' + key[5], None)
+                content += '">'
                 content += '<img src="'
                 content += form.get('image' + key[5], None)
                 content += '" style="width: '
                 content += form.get('width' + key[5], None)
                 content += 'px;float: '
                 content += form.get('float' + key[5], None)
-                content += ';"></img>'
+                content += ';"></img></a>'
             elif key[:-1] == 'lead':
                 content += '<div class="strongcontainer"><strong class="lead">'
                 content += form.get('lead' + key[4], None)
