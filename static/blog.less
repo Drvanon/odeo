@@ -77,6 +77,12 @@ body {
 
 .blog {
   width: 100%;
+
+  ul {
+    margin: 10px;
+    list-style-position: inside;
+    text-indent: 1.5em;
+  }
 }
 
 header {
@@ -163,6 +169,12 @@ strong {
   text-align: right;
 }
 
+li {
+    font-family: Rosario, sans-serif;
+  color: @ctext;
+
+}
+
 time {
   font-size: 15px;
   color: @ctext;
@@ -171,6 +183,11 @@ time {
 #news {
   .box(10px, 15px);
   margin: 10px;
+
+  li {
+    list-style: none;
+    margin: 0;
+  }
 }
 
 *>.sidecontainer { display: block; }
@@ -181,15 +198,16 @@ li a span {
   font-family: 'Roboto Slab', serif;
 }
 
-li {
-  list-style: none;
-  margin: 0;
-}
-
 nav {
   .box(10px, 15px);
   font-size: 20px;
   padding-right: 25px;
+
+  li {
+    list-style: none;
+    margin: 0;
+  }
+
 }
 
 iframe {
@@ -201,6 +219,7 @@ img {
   border: solid 1px lighten(@cstrong, 10%);
   padding: 4px;
   background-color: @cstrong;
+  margin: 4px;
 }
 
 .source {

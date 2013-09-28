@@ -14,7 +14,7 @@ def get_blogs():
 
 
 def get_news():
-    return db.Entry.query.order_by(db.Entry.id.desc())
+    return db.Entry.query.order_by(db.Entry.date.desc())
 
 
 def get_reacties():
