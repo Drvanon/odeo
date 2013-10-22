@@ -55,33 +55,24 @@
           <li><a href='/'><span>Home</span></a></li>
           <li><a href='/about'><span>About</span></a></li>
           <li><a href='http://www.pinterest.com/dorstijn/boards/'><span>Pinterest</span></a></li>
-          <li><a href="http://fold.it/">Foldit</a></li>
+          <li><a href="http://fold.it/"><span>Foldit<span></a></li>
           <li><a href='/reacties'><span>Reageren</span></a></li>
         </ul>
       </nav>
-
-      <div id="interest">
-        <h2>Toekomstige onderwerpen:</h2>
-        <ol>
-          <li><a href="http://www.newscientist.nl/nieuws/insect-heeft-tandwielen-aan-zijn-poten/">Tandwielen bij insecten</a></li>
-          <li><a href="http://www.newscientist.nl/nieuws/het-leven-komt-van-mars/">Leven op mars</a></li>
-        </ol>
-      </div>
     </div>
 
     {% block content %}
     {% endblock %}
 
     <div id="sidecontainer">
-      <aside id="news">
-        <h2 id="News_header">New:</h2>
+      <aside id="interest">
+        <h2>Toekomstige onderwerpen:</h2>
         <ol>
-          {% for item in news %}
-          {% if not loop.index > 4 %}
-          <li><a href="/blog/{{ item.id }}"><span>{{ item.title }}</span></a></li>
-          {% endif %}
-          {% endfor %}
+          <li><a href="http://www.newscientist.nl/nieuws/insect-heeft-tandwielen-aan-zijn-poten/"><span>Tandwielen bij insecten</span></a></li>
+          <li><a href="http://www.newscientist.nl/nieuws/het-leven-komt-van-mars/"><span>Leven op mars</span></a></li>
         </ol>
+      </div>
+
       </aside>
     </div>
 
