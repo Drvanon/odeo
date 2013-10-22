@@ -17,7 +17,11 @@
   padding: @pad;
   border-radius: @radius;
   margin: 10px;
-  box-shadow: 3px 3px 5px #888;
+
+  li {
+    list-style: none;
+    margin: 0;
+  } box-shadow: 3px 3px 5px #888;
 }
 
 .rotate (@degrees: 45deg) {
@@ -63,8 +67,7 @@ body {
 }
 
 #blogs {
-  .box(20px);
-  display: block;
+  .box(20px); display: block;
 
   width: 70%;
   padding-bottom: 40px;

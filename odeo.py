@@ -10,10 +10,6 @@ db.init_db()
 
 
 def get_blogs():
-    return db.Entry.query.order_by(db.Entry.date.asc()).all()
-
-
-def get_news():
     return db.Entry.query.order_by(db.Entry.date.desc())
 
 
@@ -169,4 +165,5 @@ def edit_about():
 app.secret_key = '''X\r|R\xe7y\x1bl\xd1\xb2\xf8)
     \xbe\xb7\x1a\x90\x03\xf8=\\\x14SF`'''
 
-if __name__=='__main__': app.run()
+if __name__ == '__main__':
+    app.run()
