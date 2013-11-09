@@ -1,5 +1,7 @@
 from flask import Flask
 
+from json import loads 
+
 from flask import Blueprint, render_template, abort, request, session, jsonify
 import database as db
 from sqlalchemy.exc import IntegrityError
@@ -82,32 +84,33 @@ def new_blog():
     if session.get('admin'):
         content = ''
         form = request.form
-        for key in form:
-            if key[:-1] == 'alinea':
-                content += '<p>' + form.get(key, None) + '</p>'
-            elif key[:-1] == 'image':
+        data = loads(form.get('json'))
+        for element in data['content']:
+            if element['type'] == 'alinea':
+                content += '<p>' + element['text'] + '</p>\n'
+            elif element['type'] == 'image':
                 content += '<a data-lightbox="image-1" href="'
-                content += form.get('image' + key[5], None)
-                content += '">'
+                content +=  element['link']
+                content += '">\n'
                 content += '<img src="'
-                content += form.get('image' + key[5], None)
+                content += element['link']
                 content += '" style="width: '
-                content += form.get('width' + key[5], None)
-                content += 'px;float: '
-                content += form.get('float' + key[5], None)
-                content += ';"></img></a>'
-            elif key[:-1] == 'lead':
+                content += element['width']
+                content += 'px; float: '
+                content += element['float']
+                content += ';"></img>\n</a>\n'
+            elif element['type'] == 'lead':
                 content += '<div class="strongcontainer"><strong class="lead">'
-                content += form.get('lead' + key[4], None)
-                content += '</strong></div>'
-            elif key[:-1] == 'video':
-                content += form.get(key)
-            elif key[:-1] == 'source':
+                content += element['text']
+                content += '</strong></div>\n'
+            elif element['type'] == 'video':
+                content += element['element']
+            elif element['type'] == 'source':
                 content += '<p class="source">'
-                content += form.get(key)
-                content += '</p>'
+                content += element['text']
+                content += '</p>\n'
 
-        new_blog = db.Entry(request.form.get('title', None), content)
+        new_blog = db.Entry(data['title'], content)
         db.session.add(new_blog)
         try:
             db.session.commit()

@@ -14,7 +14,39 @@ $(document).ready(function () {
 
   $('#new_blog').submit(function (e) {
     e.preventDefault();
-    $.post('/admin/new_blog', $(this).serialize(), function (data){
+    var data = {
+      'title': $(this).find('#title').val(),
+      'content': []
+    } 
+    $(this).find('.el').each(function (i, e){
+      if($(e).attr('data-type')=='alinea') {
+        data.content.push({
+          'type': 'alinea',
+          'text': $(e).find('.alinea').val()
+        })
+      }
+      if($(e).attr('data-type')=='image') {
+        data.content.push({
+          'type': 'image',
+          'float': $(e).find('.float').val(),
+          'link': $(e).find('.link').val(),
+          'width': $(e).find('.width').val()
+        })
+      }
+      if($(e).attr('data-type')=='source') {
+        data.content.push({
+          'type': 'source',
+          'text': $(e).find('.source').val()
+        })
+      }
+      if($(e).attr('data-type')=='video') {
+        data.content.push({
+          'type': 'video',
+          'element': $(e).find('.video').val()
+        })
+      }
+    });
+    $.post('/admin/new_blog', {"json" :JSON.stringify(data)}, function (data){
       alert(data.message);
     });
   });
@@ -33,13 +65,14 @@ $(document).ready(function () {
       $(remove).text("remove this element");
 
       input.type = "textarea";
-      input.name = "alinea" + count;
+      $(input).addClass('alinea');
       lab.innerHTML = "Alinea:";
       lab.appendChild(input);
 
       div.appendChild(lab);
       div.appendChild(remove);
       $(div).addClass('el');
+      $(div).attr('data-type', 'alinea');
 
       $('#inputField').append(div);
 
@@ -70,18 +103,18 @@ $(document).ready(function () {
       $(remove).text("remove this element");
 
       inputlink.type = "textarea";
-      inputlink.name = "image" + count;
+      $(inputlink).addClass('link');
       lablink.innerHTML = "link:";
       lablink.appendChild(inputlink);
 
 
       inputfloat.type = "textarea";
-      inputfloat.name = "float" + count;
+      $(inputfloat).addClass('float');
       labfloat.innerHTML = "float:";
       labfloat.appendChild(inputfloat);
 
       inputwidth.type = "textarea";
-      inputwidth.name = "width" + count;
+      $(inputwidth).addClass("width");
       labwidth.innerHTML = "width:";
       labwidth.appendChild(inputwidth);
 
@@ -91,6 +124,7 @@ $(document).ready(function () {
       div.appendChild(remove);
       $('#inputField').append(div);
       $(div).addClass('el');
+      $(div).attr('data-type', 'image');
 
       $('.remove_el').click(function () {
         $(this).parent().remove();
@@ -107,13 +141,14 @@ $(document).ready(function () {
       var input = document.createElement("textarea");
       var div = document.createElement("div");
 
-      input.name = "lead" + count;
+      $(input).addClass('lead')
       lab.innerHTML = "Lead:";
       lab.appendChild(input);
 
       div.appendChild(lab);
       div.appendChild(remove);
       $(div).addClass('el');
+      $(div).addClass('lead');
       $('#inputField').append(div);
 
       $('.remove_el').click(function () {
@@ -127,16 +162,17 @@ $(document).ready(function () {
       $(remove).text("remove this element");
 
       var lab = document.createElement("label");
-      var input = document.createElement("input");
+      var input = document.createElement("textarea");
       var div = document.createElement("div");
 
-      input.name = "video" + count;
+      $(input).addClass('video')
       lab.innerHTML = "Video:";
       lab.appendChild(input);
 
       div.appendChild(lab);
       div.appendChild(remove);
       $(div).addClass('el');
+      $(div).attr('data-type', 'video');
       $('#inputField').append(div);
 
       $('.remove_el').click(function () {
@@ -153,13 +189,14 @@ $(document).ready(function () {
       var input = document.createElement("input");
       var div = document.createElement("div");
 
-      input.name = "source" + count;
+      $(input).addClass("source")
       lab.innerHTML = "source:";
       lab.appendChild(input);
 
       div.appendChild(lab);
       div.appendChild(remove);
       $(div).addClass('el');
+      $(div).attr('data-type', 'source');
       $('#inputField').append(div);
 
       $('.remove_el').click(function () {
