@@ -29,6 +29,17 @@ def get_about():
 def index():
     return render_template('blogs.html', news=get_news(), blogs=get_blogs())
 
+@app.route('/blogs/titles')
+def json_blogs():
+    return jsonify(
+        {
+            'titles': [
+                {'title': blog.title, 'id': blog.id}
+                for blog in get_blogs()
+            ]
+        }
+    )
+
 
 @app.route('/blog/<int:id>')
 def blog(id):
