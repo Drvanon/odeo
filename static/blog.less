@@ -204,13 +204,23 @@ time {
 .sidecontainer {
   max-width: 210px;
   flex: 1;
-}
 
+  li {
+    list-style: none;
+    margin: 0;
+    margin-bottom: 3px;
 
-li a span {
-  list-style: none;
-  color: @cstrong;
-  font-family: 'Roboto Slab', serif;
+    &:hover {
+      text-decoration: underline;
+      color: inherit;
+    }
+
+    a {
+      list-style: none;
+      color: @cstrong;
+      font-family: 'Roboto Slab', serif;
+    }
+  }
 }
 
 nav {
