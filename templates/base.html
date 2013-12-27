@@ -2,23 +2,37 @@
 <html>
 <head>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.3/angular.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.3/angular.js"></script>
+<script src="//code.angularjs.org/1.2.3/angular-sanitize.js"></script>
 <script>
-app = angular.module("app", []);
+var app = angular.module("app", ['ngSanitize']);
 
-app.config(function($interpolateProvider) {
-  $interpolateProvider.startSymbol('{[{');
-  $interpolateProvider.endSymbol('}]}');
+app.controller('BlogCtrl', function ($scope, $http) {
+  $http.get('/static/data.json')
+    .success(function (data) {
+      $scope.blogs = data.blogs;
+    })
+    .error(function () {
+      $scope.error = 'Something went wrong';
+    });
 });
 
-app.controller('TitleCtrl', function($scope, $http) {
+app.filter('unsafe', function($sce) {
+    return function(val) {
+        return $sce.trustAsHtml(val);
+    };
+});
+
+app.controller('TitleCtrl', function($scope, $http, $sce) {
   var url = "/blogs/titles";
 
-  $http.get(url).
-    success(function(data) {
+  $scope.html = "<h1>Hello World</h1>";
+
+  $http.get(url)
+    .success(function(data) {
       $scope.titles = data.titles;
     })
-    .error(function(data) {$scope.error = "Something went wrong";})
+    .error(function(data) {$scope.error = "Something went wrong";});
 });
 </script>
 
@@ -41,7 +55,7 @@ app.controller('TitleCtrl', function($scope, $http) {
 
 <script src="/static/less.min.js"></script>
 </head>
-<body>
+<body ng-app="app">
 
 <div id='reageer'>
   <a href='/reacties'>
@@ -76,22 +90,54 @@ app.controller('TitleCtrl', function($scope, $http) {
         </ul>
       </nav>
     </div>
+    {% raw %}
+    <div id="blogs" ng-controller='BlogCtrl'>
+      <p ng-if="error" class="error">{{ error }}</p>
+      <div class="blog" ng-repeat="blog in blogs">
+        <a href='/blog/{{ blog.id }}'><h2>{{ blog.title }}</h2></a>
 
-    {% block content %}
-    {% endblock %}
+        <div class="blog-content">
 
-    <div class="sidecontainer" ng-app="app">
+          <!-- p -->
+          <p ng-repeat-start="el in blog.content" class="{{ el.class }}" id="{{ el.id }}" ng-if="el.type == 'p'">{{ el.text }}</p>
+
+          <!-- img -->
+          <a data-lightbox="image-1" href='{{ el.source }}' ng-if='el.type == "img"'>
+            <img style="width: {{ el.width }}; float: {{ el.float }}" 
+              class="{{ el.class }}" id="{{ el.id }}" ng-src="{{ el.source }}">
+          </a>
+
+          <!-- lead -->
+          <div ng-if='el.type == "lead"' class="strong-container">
+            <strong class="lead" ><p>{{ el.text }}</p></strong>
+          </div>
+
+          <!-- html -->
+          <div ng-if="el.type == 'html'"  ng-bind-html="el.html | unsafe"></div>
+
+          <!-- source --> 
+          <div class="sources" ng-if='el.type == "sources"' ng-repeat-end="">
+            <p ng-repeat="source in el.sources"><sup>{{ index }}</sup>
+              <a href="{{ source.href }}">{{ source.text }}</a></p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="sidecontainer">
       <aside id="interest" ng-controller="TitleCtrl">
         <h2>Archief:</h2>
-        <p ng-if="error">{[{ error }]}</p>
+        <p ng-if="error">{{ error }}</p>
         <ol>
           <li ng-repeat="title in titles">
-            <a href="/blog/{[{ title.id }]}">{[{ title.title }]}</a>
+            <a href="/blog/{{ title.id }}">{{ title.title }}</a>
           </li>
         </ol>
     </div>
 
   </div>
+  {% endraw %}
 </div>
 </body>
 </html>

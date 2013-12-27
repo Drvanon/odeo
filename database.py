@@ -1,56 +1,5 @@
-from sqlalchemy import create_engine, Column, Integer
-from sqlalchemy import String, DateTime, ForeignKey
-from sqlalchemy.orm import scoped_session, sessionmaker
-from sqlalchemy.orm import relationship, backref
-from sqlalchemy.ext.declarative import declarative_base
-from datetime import datetime
+from pymongo import MongoClient
 
-engine = create_engine('postgresql:///blog.db', convert_unicode=True)
-session = scoped_session(
-    sessionmaker(autocommit=False, autoflush=False, bind=engine))
-Base = declarative_base()
-Base.query = session.query_property()
+client = MongoClient("localhost", 27017)
 
-
-class Entry(Base):
-    __tablename__ = 'entries'
-
-    id = Column(Integer, primary_key=True)
-    title = Column(String(50), unique=True)
-    content = Column(String())
-    date = Column(DateTime)
-
-    def __init__(self, title, content):
-        self.title = title
-        self.content = content
-        self.date = datetime.now()
-
-
-class About(Base):
-    __tablename__ = 'abouts'
-
-    id = Column(Integer, primary_key=True)
-    content = Column(String())
-
-    def __init__(self, content):
-        self.content = content
-
-
-class Reaction(Base):
-    __tablename__ = 'reactions'
-
-    id = Column(Integer, primary_key=True)
-    title = Column(String(100))
-    content = Column(String())
-    author = Column(String(200))
-    date = Column(DateTime)
-
-    def __init__(self, title, content, author):
-        self.title = title
-        self.content = content
-        self.author = author
-        self.date = datetime.now()
-
-
-def init_db():
-    Base.metadata.create_all(bind=engine)
+db = client.odeo

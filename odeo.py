@@ -8,37 +8,24 @@ from sqlalchemy.exc import IntegrityError
 
 app = Flask(__name__)
 
-db.init_db()
 
 def get_news():
     return []
 
 def get_blogs():
-    return db.Entry.query.order_by(db.Entry.date.desc())
+    return db.entry.query.order_by(db.entry.date.desc())
 
 
 def get_reacties():
-    return db.Reaction.query.all()
+    return db.reaction.query.all()
 
 
 def get_about():
-    return db.About.query.first()
-
-
-@app.route('/')
-def index():
-    return render_template('blogs.html', news=get_news(), blogs=get_blogs())
+    return db.about.query.first()
 
 @app.route('/blogs/titles')
 def json_blogs():
-    return jsonify(
-        {
-            'titles': [
-                {'title': blog.title, 'id': blog.id}
-                for blog in get_blogs()
-            ]
-        }
-    )
+    return jsonify(db.blogs.find({}, {'_id': False, 'id': True, 'title': True}))
 
 
 @app.route('/blog/<int:id>')
@@ -47,13 +34,13 @@ def blog(id):
     if not blog:
         abort(404)
     else:
-        return render_template('blog.html', news=get_news(), blog=blog)
+        return render_template('blog.html', blog=blog)
 
 
 @app.route('/reacties')
 def reacties():
     return render_template(
-        'reacties.html', news=get_news(), reacties=get_reacties())
+        'reacties.html', reacties=get_reacties())
 
 
 @app.route('/reacties/new_reaction', methods=["POST"])
@@ -72,7 +59,7 @@ def new_reaction():
 def about():
     print(get_about())
     content = get_about().content
-    return render_template('about.html', content=content, news=get_news())
+    return render_template('about.html', content=content)
 
 
 @app.route('/admin', methods=["POST", "GET"])
