@@ -1,0 +1,25 @@
+{
+	"blogs": [
+		{ 
+			"content": [
+				{
+					"type": "p",
+					"text": "This is a test"
+				},
+				{
+					"type": "img",
+					"source": "http://i5.mangareader.net/sidooh/126/sidooh-4669675.jpg", 
+					"width": "100px",
+					"float": "right"
+				},
+				{
+					"type": "html",
+					"html": "<p>Test html</p>"
+				}
+			],
+			"title":"Test",
+			"id": 1
+		}
+	]
+
+}

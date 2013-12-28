@@ -1,245 +1,133 @@
-$(document).ready(function () {
-  var count = 0;
-
-  $.get('/admin/blog/' + $('#select_blog').val(), function (data) {
-      $('#etitle').val(data.title);
-      $('#econtent').val(data.content);
-
-      id = data.id;
-    });
-
-  $.get('/admin/about', function (data) {
-    $('#acontent').text(data.content);
-  });
-
-  $('#new_blog').submit(function (e) {
-    e.preventDefault();
-    var data = {
-      'title': $(this).find('#title').val(),
-      'content': []
-    } 
-    $(this).find('.el').each(function (i, e){
-      if($(e).attr('data-type')=='alinea') {
-        data.content.push({
-          'type': 'alinea',
-          'text': $(e).find('.alinea').val()
-        })
-      }
-      if($(e).attr('data-type')=='image') {
-        data.content.push({
-          'type': 'image',
-          'float': $(e).find('.float').val(),
-          'link': $(e).find('.link').val(),
-          'width': $(e).find('.width').val()
-        })
-      }
-      if($(e).attr('data-type')=='source') {
-        data.content.push({
-          'type': 'source',
-          'text': $(e).find('.source').val()
-        })
-      }
-      if($(e).attr('data-type')=='video') {
-        data.content.push({
-          'type': 'video',
-          'element': $(e).find('.video').val()
-        })
-      }
-    });
-    $.post('/admin/new_blog', {"json" :JSON.stringify(data)}, function (data){
-      alert(data.message);
-    });
-  });
-
-  $("#new_element").submit(function (e) {
-    e.preventDefault();
-    if($("#select_type").val()=="alinea"){
-      count++;
-      var lab = document.createElement("label");
-      var input = document.createElement("textarea");
-
-      var div = document.createElement("div");
-
-      var remove = document.createElement("button");
-      $(remove).addClass("remove_el");
-      $(remove).text("remove this element");
-
-      input.type = "textarea";
-      $(input).addClass('alinea');
-      lab.innerHTML = "Alinea:";
-      lab.appendChild(input);
-
-      div.appendChild(lab);
-      div.appendChild(remove);
-      $(div).addClass('el');
-      $(div).attr('data-type', 'alinea');
-
-      $('#inputField').append(div);
-
-      $('.remove_el').click(function () {
-        $(this).parent().remove();
-        count--;
-      });
-
+Array.prototype.move = function (old_index, new_index) {
+  while (old_index < 0) {
+    old_index += this.length;
+  }
+  while (new_index < 0) {
+    new_index += this.length;
+  }
+  if (new_index >= this.length) {
+    var k = new_index - this.length;
+    while ((k--) + 1) {
+      this.push(undefined);
     }
-    if ($("#select_type").val()=="image"){
-      count++;
-      var div = document.createElement("div");
+  }
+  this.splice(new_index, 0, this.splice(old_index, 1)[0]);
+    return this; // for testing purposes
+  };
 
-      var lablink = document.createElement("label");
-      var inputlink = document.createElement("input");
+var app = angular.module("app", []);
 
-      var labfloat = document.createElement("label");
-      var inputfloat = document.createElement("input");
+var types = [
+{"name": 'p', "fields": ["text"]},
+{"name": 'img', "fields": ["source", "width", "float"]},
+{"name": 'lead', "fields": ["text"]}, 
+{"name": 'html', "fields": ["html"]},
+{"name": 'source', "fields": ["source", "text"]}
+]
 
-      var labwidth = document.createElement("label");
-      var inputwidth = document.createElement("input");
+$.get('/admin/authorized', function (data){
+  if (!(data.authorized == true)) {
+    window.location = '/';
+  }
+});
 
-      var labid = document.createElement("label");
-      var inputid = document.createElement("input");
+app.controller('new_blogCtrl', function ($scope, $http) {
+  $scope.blog = {'content': [], "title": ""};
 
-      var remove = document.createElement("button");
-      $(remove).addClass("remove_el");
-      $(remove).text("remove this element");
+  $scope.types = types;
+  $scope.type = $scope.types[0];
 
-      inputlink.type = "textarea";
-      $(inputlink).addClass('link');
-      lablink.innerHTML = "link:";
-      lablink.appendChild(inputlink);
+  $scope.new_element = function () {
+    $scope.blog.content.push({'type': $scope.type.name});
+  };
 
+  $scope.remove_el = function (index) {
+    $scope.blog.content.splice(index, 1);
+  }
 
-      inputfloat.type = "textarea";
-      $(inputfloat).addClass('float');
-      labfloat.innerHTML = "float:";
-      labfloat.appendChild(inputfloat);
+  $scope.move_up = function (index) {
+    $scope.blog.content.move(index, index + 1);
+  }
 
-      inputwidth.type = "textarea";
-      $(inputwidth).addClass("width");
-      labwidth.innerHTML = "width:";
-      labwidth.appendChild(inputwidth);
+  $scope.move_down = function (index) {
+    $scope.blog.content.move(index, index - 1);
+  }
 
-      div.appendChild(lablink);
-      div.appendChild(labfloat);
-      div.appendChild(labwidth);
-      div.appendChild(remove);
-      $('#inputField').append(div);
-      $(div).addClass('el');
-      $(div).attr('data-type', 'image');
-
-      $('.remove_el').click(function () {
-        $(this).parent().remove();
-        count--;
-      });
-
-    }
-    if ($("#select_type").val()=="lead"){
-      var remove = document.createElement("button");
-      $(remove).addClass("remove_el");
-      $(remove).text("remove this element");
-
-      var lab = document.createElement("label");
-      var input = document.createElement("textarea");
-      var div = document.createElement("div");
-
-      $(input).addClass('lead')
-      lab.innerHTML = "Lead:";
-      lab.appendChild(input);
-
-      div.appendChild(lab);
-      div.appendChild(remove);
-      $(div).addClass('el');
-      $(div).addClass('lead');
-      $('#inputField').append(div);
-
-      $('.remove_el').click(function () {
-        $(this).parent().remove();
-        count--;
-      });
-    }
-    if ($("#select_type").val()=="video") {
-      var remove = document.createElement("button");
-      $(remove).addClass("remove_el");
-      $(remove).text("remove this element");
-
-      var lab = document.createElement("label");
-      var input = document.createElement("textarea");
-      var div = document.createElement("div");
-
-      $(input).addClass('video')
-      lab.innerHTML = "Video:";
-      lab.appendChild(input);
-
-      div.appendChild(lab);
-      div.appendChild(remove);
-      $(div).addClass('el');
-      $(div).attr('data-type', 'video');
-      $('#inputField').append(div);
-
-      $('.remove_el').click(function () {
-        $(this).parent().remove();
-        count--;
-      });
-    }
-    if ($("#select_type").val()=="source") {
-      var remove = document.createElement("button");
-      $(remove).addClass("remove_el");
-      $(remove).text("remove this element");
-
-      var lab = document.createElement("label");
-      var input = document.createElement("input");
-      var div = document.createElement("div");
-
-      $(input).addClass("source")
-      lab.innerHTML = "source:";
-      lab.appendChild(input);
-
-      div.appendChild(lab);
-      div.appendChild(remove);
-      $(div).addClass('el');
-      $(div).attr('data-type', 'source');
-      $('#inputField').append(div);
-
-      $('.remove_el').click(function () {
-        $(this).parent().remove();
-        count--;
-      });
-    }
-  });
-
-  var id = -1;
-
-  $('#select_blog').change(function (){
-    $.get('/admin/blog/' + $('#select_blog').val(), function (data) {
-      $('#etitle').val(data.title);
-      $('#econtent').val(data.content);
-
-      id = data.id;
-    });
-  });
-
-  $('#edit_blog').submit(function (e) {
-    e.preventDefault();
-
-    $.post('/admin/edit/' + id, $(this).serialize(), function (data) {
-      alert(data.message);
-    });
-  });
-
-  $('#remove_blog').click(function (e) {
-    e.preventDefault();
+  $scope.submit = function () {
+    var data = {};
+    $.extend(data, $scope.blog);
+    for (var i = data.content.length - 1; i >= 0; i--) {
+      delete data.content[i]["$$hashKey"];
+    };
+     
     $.ajax({
-      url: '/admin/blog/delete/' + id,
-      type: 'DELETE',
-      success: function(data) {
-        alert(data.message);
-      }
+      type: 'POST',
+      dataType: 'json',
+      contentType: 'application/json; charset=utf-8',
+      url: '/admin/new',
+      data: JSON.stringify({'blog': data})
+    }).done(function(msg) {
+      alert("Succesfully created blog!")
     });
+  };
+  
+});
+
+app.controller("edit_blogCtrl", function ($scope, $http) {
+  $scope.types = types;
+  $scope.type = $scope.types[0];
+
+  $scope.new_element = function () {
+    $scope.blog.content.push({'type': $scope.type.name});
+  };
+
+  $scope.remove_el = function (index) {
+    $scope.blog.content.splice(index, 1);
+  }
+
+  $scope.move_up = function (index) {
+    $scope.blog.content.move(index, index + 1);
+  }
+
+  $scope.move_down = function (index) {
+    $scope.blog.content.move(index, index - 1);
+  }
+  $http.get('/blogs').success(function (data){
+    $scope.blogs = data.blogs;
+    $scope.blog = $scope.blogs[0];
   });
 
-  $('#about').submit(function (e) {
-    e.preventDefault();
-    $.post('/admin/about/edit', {"content": $('#acontent').val()}, function (data) {
-      alert(data.message);
+  $scope.submit = function () {
+    var data = {};
+    $.extend(data, $scope.blog);
+    for (var i = data.content.length - 1; i >= 0; i--) {
+      delete data.content[i]["$$hashKey"];
+    };
+     
+    $.ajax({
+      type: 'POST',
+      dataType: 'json',
+      contentType: 'application/json; charset=utf-8',
+      url: '/admin/edit/' + $scope.blog.id,
+      data: JSON.stringify(data)
+    }).done(function(msg) {
+      alert("Succesfully edited blog!")
+    }).fail(function(msg){
+      alert("Something went wrong. Please contact the system administrator.")
     });
- });
+  };
+});
+
+app.directive('blog', function () {
+  return {
+    'restrict': "E",
+    'templateUrl': '/blog.html'
+  }
+});
+
+app.directive('blogeditor', function (){ 
+  return  {
+    'restrict': "E",
+    'templateUrl': "/BlogEditor.html"
+  }
 });

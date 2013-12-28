@@ -1,0 +1,36 @@
+<div>
+	<label>Title: <input type="text" ng-model="blog.title"></label>
+	<div ng-repeat="element in blog.content">
+		<h3>{{ element.type }}</h3>
+		<!-- p -->
+		<label ng-if="element.type == 'p'">Text: <textarea ng-model="element.text"></textarea></label>
+
+		<!-- img -->
+		<label ng-if="element.type == 'img'">Source: <input type="text" ng-model="element.source"></label>
+		<label ng-if="element.type == 'img'">Width: <input type="text" ng-model="element.width"></label>
+		<label ng-if="element.type == 'img'">Float: <input type="text" ng-model="element.float"></label>
+
+		<!-- lead -->
+		<label ng-if="element.type == 'lead'">Text: <input type="text" ng-model="element.text"></label>
+
+		<!-- source -->
+		<label ng-if="element.type == 'source'">Source: <input type="text" ng-model="element.source"></label>
+		<label ng-if="element.type == 'source'">Text: <input type="text" ng-model="element.text"></label>
+
+		<!-- html -->
+		<label ng-if="element.type == 'html'">Html: <input type="text" ng-model="element.html"></label>
+
+		<div>
+			<button ng-click="remove_el($index)">X</button>
+			<button ng-click="move_up($index)">V</button>
+			<button ng-click="move_down($index)">^</button>
+		</div>
+	</div>
+	<div>
+	<button ng-click="submit()">Submit</button>
+		<div>
+			<select ng-model="type" ng-options="type.name for type in types"></select>
+			<button ng-click="new_element()">New Element</button>
+		</div>
+	</div>
+</div>
