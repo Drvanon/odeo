@@ -1,0 +1,51 @@
+@import 'colors';
+@import 'browser_support';
+
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+	background-color: $background;
+	overflow-x: hidden;
+}
+
+main {
+	padding: 10px;
+
+
+	h2, h3 {
+		margin: 10px 0px 1px 0px;
+		color: $blogtext;
+	}
+
+	p {
+		color: $blogtext;
+	}
+
+	strong {
+		color: $strong;
+	}	
+
+	blockquote {
+		margin: 10px 7px 10px;
+	}
+
+	blockquote:before {
+	  color: #ccc;
+	  content: open-quote;
+	  font-size: 3em;
+	  line-height: 0.1em;
+	  margin-right: 0.1em;
+	  vertical-align: -0.4em;
+	}
+
+	img {
+		width: 300px;
+		float: right; 
+		margin: 10px;
+	}
+}
+@import 'header';
+@import 'nav';

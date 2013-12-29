@@ -13,15 +13,27 @@
 		<h1>Welcome to the admin page</h1>
 	</header>
 	<main ng-app="app">
-		<div id="new_blog" class="container" ng-controller="new_blogCtrl">
+		<div id="selector" ng-controller="selectCtrl">
+			<ol id="tab">
+				<li ng-click="new()">New blog</li>
+				<li ng-click="edit()">Edit blog</li>
+				<li ng-click="remove()">Remove blog</li>
+			</ol>
+		</div>
+		<div id="new" class="container" ng-controller="newCtrl">
 			<h2>New Blog</h2>
 			<blogeditor></blogeditor>
 		</div>
 
-		<div id="edit_blog" class="container" ng-controller="edit_blogCtrl">
+		<div id="edit" class="container" ng-controller="editCtrl">
 			<h2>Edit blog</h2>
 			<select ng-model="blog" ng-options="blog.title for blog in blogs"></select>
 			<blogeditor></blogeditor>
+		</div>
+		<div id="remove" class="container" ng-controller="removeCtrl">
+			<h2>Remove blog</h2>
+			<select ng-model="blog" ng-options="blog.title for blog in blogs"></select>
+			<button ng-click="remove()">Remove</button>
 		</div>
 	</main>
 </body>

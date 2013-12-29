@@ -31,7 +31,23 @@ $.get('/admin/authorized', function (data){
   }
 });
 
-app.controller('new_blogCtrl', function ($scope, $http) {
+app.controller('selectCtrl', function ($scope) {
+  $('.container').hide();
+  $scope.new = function () {
+    $('.container').hide();
+    $('#new').show();
+  };
+  $scope.edit = function () {
+    $('.container').hide();
+    $('#edit').show();
+  };
+  $scope.remove = function () {
+    $('.container').hide();
+    $('#remove').show();
+  };
+})
+
+app.controller('newCtrl', function ($scope, $http) {
   $scope.blog = {'content': [], "title": ""};
 
   $scope.types = types;
@@ -73,7 +89,12 @@ app.controller('new_blogCtrl', function ($scope, $http) {
   
 });
 
-app.controller("edit_blogCtrl", function ($scope, $http) {
+app.controller("editCtrl", function ($scope, $http) {
+  $http.get('/blogs').success(function (data){
+    $scope.blogs = data.blogs;
+    $scope.blog = $scope.blogs[0];
+  }); 
+
   $scope.types = types;
   $scope.type = $scope.types[0];
 
@@ -92,10 +113,7 @@ app.controller("edit_blogCtrl", function ($scope, $http) {
   $scope.move_down = function (index) {
     $scope.blog.content.move(index, index - 1);
   }
-  $http.get('/blogs').success(function (data){
-    $scope.blogs = data.blogs;
-    $scope.blog = $scope.blogs[0];
-  });
+  
 
   $scope.submit = function () {
     var data = {};
@@ -116,6 +134,24 @@ app.controller("edit_blogCtrl", function ($scope, $http) {
       alert("Something went wrong. Please contact the system administrator.")
     });
   };
+});
+
+app.controller('removeCtrl', function ($scope, $http) {
+  $http.get('/blogs').success(function (data){
+    $scope.blogs = data.blogs;
+    $scope.blog = $scope.blogs[0];
+  });
+
+  $scope.remove = function () {
+    $.ajax({
+      type: 'DELETE',
+      url: '/admin/blog/' + $scope.blog.id,
+    }).done(function (msg){
+      alert("Succesfully removed blog!");
+    }).fail(function (msg) {
+      alert("Something went wrong. Please contact this system administrator.");
+    });
+  }
 });
 
 app.directive('blog', function () {

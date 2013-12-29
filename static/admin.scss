@@ -1,0 +1,24 @@
+main {
+	display: flex;
+	flex-direction: column;
+}
+
+blog {
+	display: flex;
+	flex-direction: row;
+}
+
+.container {
+	padding: 10px;
+	margin: 10px;
+}
+
+#tab {
+	display: flex;
+	flex-direction: row;
+	list-style: none;
+
+	li {
+		margin: 10px;
+	}	
+}

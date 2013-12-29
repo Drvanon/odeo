@@ -1,25 +1,19 @@
-<a href='/blog/{{ blog.id }}'><h2>{{ blog.title }}</h2></a>
+<article>
+	<h2>{{ blog.title }}</h2>
 
 <div class="blog-content">
 
-	<!-- p -->
 	<p ng-repeat-start="el in blog.content" class="{{ el.class }}" id="{{ el.id }}" ng-if="el.type == 'p'">{{ el.text }}</p>
 
-	<!-- img -->
 	<a data-lightbox="image-1" href='{{ el.source }}' ng-if='el.type == "img"'>
-		<img style="width: {{ el.width }}; float: {{ el.float }}" 
+		<img ng-style="{width: el.width, float: el.float }" 
 		class="{{ el.class }}" id="{{ el.id }}" ng-src="{{ el.source }}">
 	</a>
 
-	<!-- lead -->
-	<div ng-if='el.type == "lead"' class="strong-container">
-		<strong class="lead" ><p>{{ el.text }}</p></strong>
-	</div>
+	<strong ng-if='el.type == "lead"'><p>{{ el.text }}</p></strong>
 
-	<!-- html -->
 	<div ng-if="el.type == 'html'"  ng-bind-html="el.html | unsafe"></div>
 
-	<!-- source --> 
 	<div class="sources" ng-if='el.type == "sources"' ng-repeat-end="">
 		<p ng-repeat="source in el.sources"><sup>{{ index }}</sup>
 			<a href="{{ source.href }}">{{ source.text }}</a>
@@ -27,3 +21,4 @@
 	</div>
 
 </div>
+</article>

@@ -1,0 +1,37 @@
+@mixin transistion ($property, $duration, $delay) {
+	-webkit-transition: $property $duration $delay; 
+  	 -moz-transition: $property $duration $delay; 
+	    -ms-transition: $property $duration $delay; 
+	     -o-transition: $property $duration $delay; 
+	     	  transition: $property $duration $delay; 
+}
+
+@mixin transistion2 ($property1, $duration1, $delay1, $property2, $duration2, $delay2) {
+	-webkit-transition: $property1 $duration1 $delay1, $property2 $duration2 $delay2; 
+  	 -moz-transition: $property1 $duration1 $delay1, $property2 $duration2 $delay2; 
+	    -ms-transition: $property1 $duration1 $delay1, $property2 $duration2 $delay2; 
+	     -o-transition: $property1 $duration1 $delay1, $property2 $duration2 $delay2; 
+	     	  transition: $property1 $duration1 $delay1, $property2 $duration2 $delay2; 
+}
+
+@mixin rotate ($d){
+	-webkit-transform: rotate($d);
+  	 -moz-transform: rotate($d);
+	    -ms-transform: rotate($d);
+	     -o-transform: rotate($d);
+	     	  transform: rotate($d);
+}
+
+ @mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+       -o-border-radius: $radius;
+          border-radius: $radius;
+}
+
+@mixin box-shadow ($code) {
+	-webkit-box-shadow: $code;
+	   -moz-box-shadow: $code;
+	        box-shadow: $code;
+}

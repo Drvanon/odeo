@@ -42,7 +42,7 @@ def authorized():
 @adminapp.route('/admin/new', methods=["POST"])
 def new_blog():
     blog = request.json.get('blog')
-    blog["id"] = db.blogs.count()
+    blog["id"] = db.blogs.count() + 1
     db.blogs.insert(blog)
     return jsonify()
 
@@ -54,23 +54,7 @@ def edit_page(id):
 
 
 @logged_in
-@adminapp.route('/admin/blog/<id>', methods=["DELETE"])
+@adminapp.route('/admin/blog/<int:id>', methods=["DELETE"])
 def delete_blog(id):
     db.blogs.remove({'id': id})
-
-@logged_in
-@adminapp.route('/admin/about')
-def rget_about():
-    about = db.About.query.first()
-
-    return jsonify({"content": about.content})
-
-@logged_in
-@adminapp.route('/admin/about/edit', methods=["POST"])
-def edit_about():
-    about = get_about()
-
-    content = request.form.get('content')
-    about.content = content
-    db.session.commit()
-    return jsonify({"message": "Edit succesfull."})
+    return jsonify({'id': id})

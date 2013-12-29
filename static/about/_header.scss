@@ -1,0 +1,26 @@
+header {
+	display: flex;
+	flex-direction: row;
+	min-height: 85px;
+	padding-top: 50px;
+	background: $headerbg;
+
+	#subtitle {
+		display: flex;
+		flex-direction: column;
+	}
+
+	a {
+		text-decoration: none;
+	}
+	
+	h1 {
+		font-size: 6em;
+		color: $title;
+	}
+
+	h2 {
+		font-size: 1.7em;
+		color: $subtitle;
+	}
+}

@@ -1,117 +1,58 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.3/angular.js"></script>
-<script src="//code.angularjs.org/1.2.3/angular-sanitize.js"></script>
-<script>
-var app = angular.module("app", ['ngSanitize']);
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.3/angular.js"></script>
+  <script src="//code.angularjs.org/1.2.3/angular-sanitize.js"></script>
+  <script src="/index.js"></script>
 
-app.controller('BlogCtrl', function ($scope, $http) {
-  $http.get('/blogs')
-    .success(function (data) {
-      $scope.blogs = data.blogs;
-    })
-    .error(function () {
-      $scope.error = 'Something went wrong';
-    });
-});
-
-app.filter('unsafe', function($sce) {
-    return function(val) {
-        return $sce.trustAsHtml(val);
-    };
-});
-
-app.controller('TitleCtrl', function($scope, $http, $sce) {
-  var url = "/blogs/titles";
-
-  $http.get(url)
-    .success(function(data) {
-      $scope.titles = data.titles;
-    })
-    .error(function(data) {$scope.error = "Something went wrong";});
-});
-
-app.directive('blog', function () {
-  return {
-    'restrict': "E",
-    'templateUrl': '/blog.html'
-  }
-});
-</script>
-
-<!-- Analytics -->
-<script>
+  <!-- Analytics -->
+  <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-            ga('create', 'UA-40801514-1', 'onderzoekdeoorsprong.nl');
-              ga('send', 'pageview');
+  ga('create', 'UA-40801514-1', 'onderzoekdeoorsprong.nl');
+  ga('send', 'pageview');
 
-</script>
-<script src="/lightbox/js/lightbox-2.6.min.js"></script>
-<link href="/lightbox/css/lightbox.css" rel="stylesheet" />
-
-<link rel="stylesheet/less" type="text/css" href="blog.less" />
-<script src="/less.min.js"></script>
+  </script>
+  
+  <script src="/lightbox/js/lightbox-2.6.min.js"></script>
+  <link href="/lightbox/css/lightbox.css" rel="stylesheet" />
+  <link rel="stylesheet" type="text/css" href="/index.css">
 </head>
-<body ng-app="app">
+<body ng-app="app" ng-controller='appCtrl'>
 
-<div id='reageer'>
-  <a href='/reacties'>
-    <div id='reageer-wrapper'>
-      <p id='reageer-text'>Reageer</p>
-    </div>
-  </a>
-</div>
-
-<div id="container">
-
-  <div id="header">
-    <header>
-      <a href="/"><h1>OdeO</h1></a>
-      <div id=sur_title>
-        <h2>onderzoek</h2>
-        <h2>de</h2>
-        <h2>oorsprong</h2>
-      </div>
-    </header>
+  <div id='reageer'>
+    <a id='reageer-text' href='/forum'>Reageer</a>
   </div>
 
-  <div id="main">
-    <div class="sidecontainer">
-      <nav>
-        <ul>
-          <li><a href='/'><span>Home</span></a></li>
-          <li><a href='/about'><span>About</span></a></li>
-          <li><a href='http://www.pinterest.com/dorstijn/boards/'><span>Pinterest</span></a></li>
-          <li><a href="http://fold.it/"><span>Foldit<span></a></li>
-          <li><a href='/reacties'><span>Reageren</span></a></li>
-        </ul>
-      </nav>
+  <header>
+    <a href="/"><h1>OdeO</h1></a>
+    <div id=sub_title>
+      <h2>onderzoek</h2>
+      <h2>de</h2>
+      <h2>oorsprong</h2>
     </div>
-    <div id="blogs" ng-controller='BlogCtrl'>
+
+    <nav>
+      <ul>
+        <li class="active"><a href='/'>Home</a></li>
+        <li><a href='/about'>About</a></li>
+        <li><a href='http://www.pinterest.com/dorstijn/boards/'>Pinterest</a></li>
+        <li><a href="http://fold.it/">Foldit</a></li>
+        <li><a href='/forum'>Forum</a></li>
+      </ul>
+      <label>Search: <input placeholder="id/title/text/anything" ng-model="search.$"></label>
+    </nav>
+  </header>
+
+  <main id="main">
+    <div id="blogs" >
       <p ng-if="error" class="error">{{ error }}</p>
-      <div class="blog" ng-repeat="blog in blogs">
-        <blog></blog>
-      </div>
+      <blog id="{{ blog.id }}" ng-repeat="blog in blogs | filter:search | orderBy:'-id' "></blog>
     </div>
-
-    <div class="sidecontainer">
-      <aside id="interest" ng-controller="TitleCtrl">
-        <h2>Archief:</h2>
-        <p ng-if="error">{{ error }}</p>
-        <ol>
-          <li ng-repeat="title in titles">
-            <a href="/blog/{{ title.id }}">{{ title.title }}</a>
-          </li>
-        </ol>
-    </div>
-
-  </div>
-</div>
+  </main>
 </body>
 </html>

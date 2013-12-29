@@ -1,0 +1,16 @@
+#reageer {
+  position: absolute;
+  right: -100px;
+  top: 20px;
+  padding: 8px 100px 8px 100px;
+  background-color: $orange;
+  border: 5px dashed $darkblue;
+  @include box-shadow( 0 0 0 4px $orange);
+  @include rotate(45deg);
+
+	#reageer-text {
+		font-family: 'Bowlby One SC', cursive;
+		color: $darkblue;
+		text-decoration: none;
+	}
+}
