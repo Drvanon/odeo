@@ -29,7 +29,7 @@ var types = [
 
 $.get('/admin/authorized', function (data){
   if (!(data.authorized == true)) {
-    window.location = '/';
+    window.location = '/passpage.html';
   }
 });
 

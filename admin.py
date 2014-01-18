@@ -12,13 +12,6 @@ def logged_in(func):
             abort(401)
     return inner
 
-@adminapp.route('/admin', methods=["GET"])
-def admin():
-    if session.get('admin'):
-        return redirect('/admin.html')
-    else:
-        return redirect('/passpage.html')
-
 @adminapp.route('/admin/login', methods=["POST"])            
 def login():
     salt = db.users.find_one({'name': "admin"}, {"salt": True})['salt']
