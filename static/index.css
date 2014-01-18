@@ -104,7 +104,8 @@ nav {
       float: left; }
     #blogs blog h1 {
       font-size: 20px;
-      color: #27ae60; }
+      color: #27ae60;
+      padding-top: 10px; }
     #blogs blog strong {
       color: #27ae60; }
     #blogs blog:target {
