@@ -96,6 +96,9 @@ nav {
     #blogs blog a {
       text-decoration: none;
       color: inherit; }
+    #blogs blog ol {
+      list-style: none;
+      padding-left: 20px; }
     #blogs blog img, #blogs blog iframe {
       padding: 3px;
       float: left; }

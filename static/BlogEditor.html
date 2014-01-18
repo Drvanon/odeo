@@ -28,7 +28,6 @@
 			<ol>
 				<li ng-repeat="item in element.list">
 					<input type="text" ng-model="item.text"><a ng-click="element.list.splice($index, 1)">X</a>
-					{{ item.text }}
 				</li>
 				<li ng-click="element.list.push({'text': ''})">New item</li>
 			</ol>
