@@ -5,7 +5,7 @@
 
 	<p ng-repeat-start="el in blog.content" ng-if="el.type == 'p'">{{ el.text }}</p>
 
-	<h3 ng-if="el.type == 'heading'">{{ el.text }}</h3>
+	<h1 ng-if="el.type == 'heading'">{{ el.text }}</h1>
 
 	<a data-lightbox="image-1" href='{{ el.source }}' ng-if='el.type == "img"'>
 		<img ng-style="{width: el.width, float: el.float }" 
