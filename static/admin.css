@@ -23,3 +23,8 @@ blog {
   .element div {
     display: flex;
     flex-direction: row; }
+
+.options {
+  position: fixed;
+  top: 50px;
+  right: 100px; }
