@@ -1,0 +1,24 @@
+<article>
+	<h2>{{ blog.title }}</h2>
+
+<div class="blog-content">
+
+	<lead ng-repeat-start="el in blog.content" ng-if="el.type == 'lead'" imgsrc='{{ el.source  }}'></lead>
+
+	<p ng-show="active($parent.$parent.blog)" class="{{ el.class }}" id="{{ el.id }}" ng-if="el.type == 'p'">{{ el.text }}</p>
+
+	<a ng-show="active($parent.$parent.blog)" data-lightbox="image-1" href='{{ el.source }}' ng-if='el.type == "img"'>
+		<img ng-style="{width: el.width, float: el.float }" 
+		class="{{ el.class }}" id="{{ el.id }}" ng-src="{{ el.source }}">
+	</a>
+
+	<div ng-show="active($parent.$parent.blog)" ng-if="el.type == 'html'"  ng-bind-html="el.html | unsafe"></div>
+
+	<div ng-show="active($parent.$parent.blog)" class="sources" ng-if='el.type == "sources"' ng-repeat-end="">
+		<p ng-repeat="source in el.sources"><sup>{{ index }}</sup>
+			<a href="{{ source.href }}">{{ source.text }}</a>
+		</p>
+	</div>
+
+</div>
+</article>

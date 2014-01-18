@@ -22,7 +22,9 @@ var types = [
 {"name": 'img', "fields": ["source", "width", "float"]},
 {"name": 'lead', "fields": ["text"]}, 
 {"name": 'html', "fields": ["html"]},
-{"name": 'source', "fields": ["source", "text"]}
+{"name": 'source', "fields": ["source", "text"]},
+{"name": 'heading', "fields": ["text"]},
+{"name": 'list', "fields": ["text"]}
 ]
 
 $.get('/admin/authorized', function (data){
@@ -99,7 +101,11 @@ app.controller("editCtrl", function ($scope, $http) {
   $scope.type = $scope.types[0];
 
   $scope.new_element = function () {
-    $scope.blog.content.push({'type': $scope.type.name});
+    var new_el = {'type': $scope.type.name};
+    if ($scope.type.name == 'list') {
+      new_el.list = [];
+    }
+    $scope.blog.content.push(new_el);
   };
 
   $scope.remove_el = function (index) {
@@ -113,13 +119,17 @@ app.controller("editCtrl", function ($scope, $http) {
   $scope.move_down = function (index) {
     $scope.blog.content.move(index, index - 1);
   }
-  
 
   $scope.submit = function () {
     var data = {};
     $.extend(data, $scope.blog);
     for (var i = data.content.length - 1; i >= 0; i--) {
       delete data.content[i]["$$hashKey"];
+      if (data.content[i].type == 'list'){ 
+        for (var j = data.content[i].list.length - 1; j >= 0; j--) {
+          delete data.content[i].list[j]['$$hashKey'];
+        };
+      }
     };
      
     $.ajax({

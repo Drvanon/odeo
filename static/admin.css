@@ -16,3 +16,10 @@ blog {
   list-style: none; }
   #tab li {
     margin: 10px; }
+
+.element {
+  display: flex;
+  flex-direction: column; }
+  .element div {
+    display: flex;
+    flex-direction: row; }

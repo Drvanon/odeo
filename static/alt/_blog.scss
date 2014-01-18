@@ -1,19 +1,15 @@
 #blogs {
 	padding: 100px;
-	padding-top: 20px;
 	display: flex;
-	flex-direction: row;
-	flex-flow: row wrap;
+	flex-direction: column;
+	flex-flow: column wrap;
 
 	blog {
-		border-bottom: dashed 1px;
 		color: $blogtext;
 		min-width: 300px;
 		overflow: hidden;
 		margin: 5px 2px 5px 2px;
 		padding: 10px;
-		padding-left: 150px;
-		padding-right: 150px;
 		@include transistion2(background-color, 0.3s, ease, max-width, .5s, ease);
 
 		a {
@@ -26,9 +22,8 @@
 			float: left;
 		}
 
-		h1 {
-			font-size: 20px;
-			color: $strong;
+		.lead img {
+			width: 100px;
 		}
 
 		strong {

@@ -1,0 +1,5 @@
+<div class="lead">
+	<img ng-src="{{ img_src }}">
+	<p><strong>{{ el.text }}</strong></p>
+	<p ng-click="expand($parent.$parent.blog)" ng-if="!active($parent.$parent.blog)">Lees meer</p>
+</div>

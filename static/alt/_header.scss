@@ -2,14 +2,9 @@ header {
 	display: flex;
 	flex-direction: row;
 	min-height: 85px;
-	padding-top: 33px;
+	padding-top: 50px;
+	background: $headerbg;
 	padding-left: 25px;
-
-	background-image: url('lines.svg');
-
-	position: fixed;
-	max-height: 200px;
-	width: 100%;
 
 	#subtitle {
 		display: flex;
@@ -29,8 +24,4 @@ header {
 		font-size: 1.7em;
 		color: $subtitle;
 	}
-}
-
-main {
-	padding-top: 200px;
 }

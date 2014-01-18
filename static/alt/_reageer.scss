@@ -7,7 +7,6 @@
   border: 5px dashed $darkblue;
   @include box-shadow( 0 0 0 4px $orange);
   @include rotate(45deg);
-  z-index: 14;
 
 	#reageer-text {
 		font-family: 'Bowlby One SC', cursive;

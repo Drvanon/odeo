@@ -3,7 +3,9 @@
 
 <div class="blog-content">
 
-	<p ng-repeat-start="el in blog.content" class="{{ el.class }}" id="{{ el.id }}" ng-if="el.type == 'p'">{{ el.text }}</p>
+	<p ng-repeat-start="el in blog.content" ng-if="el.type == 'p'">{{ el.text }}</p>
+
+	<h3 ng-if="el.type == 'heading'">{{ el.text }}</h3>
 
 	<a data-lightbox="image-1" href='{{ el.source }}' ng-if='el.type == "img"'>
 		<img ng-style="{width: el.width, float: el.float }" 
@@ -13,6 +15,12 @@
 	<strong ng-if='el.type == "lead"'><p>{{ el.text }}</p></strong>
 
 	<div ng-if="el.type == 'html'"  ng-bind-html="el.html | unsafe"></div>
+
+	<ol ng-if="el.type == 'list'">
+		<li ng-repeat="item in el.list">
+			{{ item.text }}
+		</li>
+	</ol>
 
 	<div class="sources" ng-if='el.type == "sources"' ng-repeat-end="">
 		<p ng-repeat="source in el.sources"><sup>{{ index }}</sup>
