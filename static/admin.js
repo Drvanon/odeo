@@ -35,15 +35,19 @@ $.get('/admin/authorized', function (data){
 
 app.controller('selectCtrl', function ($scope) {
   $('.container').hide();
+  angular.element('#edit').scope().active = false;
   $scope.new = function () {
     $('.container').hide();
     $('#new').show();
+    angular.element('#edit').scope().active = false;
   };
   $scope.edit = function () {
     $('.container').hide();
     $('#edit').show();
+    angular.element('#edit').scope().active = true;
   };
   $scope.remove = function () {
+    angular.element('#edit').scope().active = false;
     $('.container').hide();
     $('#remove').show();
   };
@@ -96,6 +100,8 @@ app.controller("editCtrl", function ($scope, $http) {
     $scope.blogs = data.blogs;
     $scope.blog = $scope.blogs[0];
   }); 
+
+  $scope.active = false;
 
   $scope.types = types;
   $scope.type = $scope.types[0];

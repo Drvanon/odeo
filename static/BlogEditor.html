@@ -44,7 +44,7 @@
 		</div>
 		</div>
 	</div>
-	<div class="options">
+	<div class="options" ng-show="active">
 		<button ng-click="submit()">Submit</button>
 		<div>
 			<select ng-model="type" ng-options="type.name for type in types"></select>
