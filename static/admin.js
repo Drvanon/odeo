@@ -64,6 +64,10 @@ app.controller('newCtrl', function ($scope, $http) {
 
   $scope.new_element = function () {
     $scope.blog.content.push({'type': $scope.type.name});
+    if ($scope.type.name == 'list') {
+      new_el.list = [];
+    }
+    $('#edit blogeditor .element:last() input:first(), #edit blogeditor .element:last() textarea:first()').focus();
   };
 
   $scope.remove_el = function (index) {
@@ -115,6 +119,7 @@ app.controller("editCtrl", function ($scope, $http) {
       new_el.list = [];
     }
     $scope.blog.content.push(new_el);
+    $('#edit blogeditor .element:last() input:first(), #edit blogeditor .element:last() textarea:first()').focus();
   };
 
   $scope.remove_el = function (index) {
