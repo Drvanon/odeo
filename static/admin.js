@@ -67,7 +67,10 @@ app.controller('newCtrl', function ($scope, $http) {
     if ($scope.type.name == 'list') {
       new_el.list = [];
     }
-    $('#edit blogeditor .element:last() input:first(), #edit blogeditor .element:last() textarea:first()').focus();
+    setTimeout(function () {
+      $('#new blogeditor .element:last() input:first(), ' + 
+        '#new blogeditor .element:last() textarea:first()').focus();
+    }, 5);
   };
 
   $scope.remove_el = function (index) {
@@ -119,7 +122,10 @@ app.controller("editCtrl", function ($scope, $http) {
       new_el.list = [];
     }
     $scope.blog.content.push(new_el);
-    $('#edit blogeditor .element:last() input:first(), #edit blogeditor .element:last() textarea:first()').focus();
+    setTimeout(function () {
+      $('#edit blogeditor .element:last() input:first(), ' + 
+        '#edit blogeditor .element:last() textarea:first()').focus();
+    }, 5);
   };
 
   $scope.remove_el = function (index) {
