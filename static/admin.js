@@ -39,7 +39,7 @@ app.controller('selectCtrl', function ($scope) {
   $scope.new = function () {
     $('.container').hide();
     $('#new').show();
-    angular.element('#edit').scope().active = false;
+    angular.element('#edit').scope().active = true;
   };
   $scope.edit = function () {
     $('.container').hide();
