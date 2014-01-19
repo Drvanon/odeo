@@ -39,15 +39,18 @@ app.controller('selectCtrl', function ($scope) {
   $scope.new = function () {
     $('.container').hide();
     $('#new').show();
-    angular.element('#edit').scope().active = true;
+    angular.element('#edit').scope().active = false;
+    angular.element('#new').scope().active = true;
   };
   $scope.edit = function () {
     $('.container').hide();
     $('#edit').show();
     angular.element('#edit').scope().active = true;
+    angular.element('#new').scope().active = false;
   };
   $scope.remove = function () {
     angular.element('#edit').scope().active = false;
+    angular.element('#new').scope().active = false;
     $('.container').hide();
     $('#remove').show();
   };
