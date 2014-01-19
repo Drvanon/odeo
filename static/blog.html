@@ -14,7 +14,7 @@
 
 	<strong ng-if='el.type == "lead"'><p>{{ el.text }}</p></strong>
 	<a data-lightbox="image-1" href='{{ el.source }}' ng-if='el.type == "lead"'>
-		<img ng-style="{width: 200px, float: left }" 
+		<img style="width: 200px;float: left;" 
 		class="{{ el.class }}" ng-src="{{ el.source }}">
 	</a>
 	<div ng-if="el.type == 'html'"  ng-bind-html="el.html | unsafe"></div>
