@@ -12,11 +12,12 @@
 		class="{{ el.class }}" id="{{ el.id }}" ng-src="{{ el.source }}">
 	</a>
 
-	<strong ng-if='el.type == "lead"'><p>{{ el.text }}</p></strong>
 	<a data-lightbox="image-1" href='{{ el.source }}' ng-if='el.type == "lead"'>
 		<img style="width: 200px;float: left;" 
 		class="{{ el.class }}" ng-src="{{ el.source }}">
 	</a>
+	<strong ng-if='el.type == "lead"'><p>{{ el.text }}</p></strong>
+	
 	<div ng-if="el.type == 'html'"  ng-bind-html="el.html | unsafe"></div>
 
 	<ol ng-if="el.type == 'list'">
