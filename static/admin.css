@@ -28,3 +28,10 @@ blog {
   position: fixed;
   top: 50px;
   right: 100px; }
+
+input {
+  width: 150px;
+  height: 16px; }
+
+textarea {
+  width: 100%; }

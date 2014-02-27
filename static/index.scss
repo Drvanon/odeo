@@ -1,10 +1,11 @@
 @import 'browser_support';
 @import 'colors';
-@import url(http://fonts.googleapis.com/css?family=Bowlby+One+SC);
+@import url(http://fonts.googleapis.com/css?family=Nunito|Bowlby+One+SC);
 
 * {
   margin: 0px;
   padding: 0px;
+  font-family: Nunito;
 }
 
 body {

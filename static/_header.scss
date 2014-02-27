@@ -4,12 +4,16 @@ header {
 	min-height: 85px;
 	padding-top: 33px;
 	padding-left: 25px;
+	-webkit-box-shadow: 0px 5px 5px 0px rgba(50, 50, 50, 0.34);
+	-moz-box-shadow:    0px 5px 5px 0px rgba(50, 50, 50, 0.34);
+	box-shadow:         0px 5px 5px 0px rgba(50, 50, 50, 0.34);
 
 	background-image: url('lines.svg');
 
 	position: fixed;
 	max-height: 200px;
 	width: 100%;
+	font-family: Bowlby One SC;
 
 	#subtitle {
 		display: flex;
