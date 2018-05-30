@@ -3,6 +3,7 @@ from flask import Blueprint, render_template, abort, request, session, jsonify
 from json import loads 
 from database import db
 from admin import adminapp 
+import os 
 
 app = Flask(__name__)
 app.register_blueprint(adminapp)
@@ -19,8 +20,7 @@ def blog(id):
     else:
         abort(404)
 
-app.secret_key = '''X\r|R\xe7y\x1bl\xd1\xb2\xf8)
-    \xbe\xb7\x1a\x90\x03\xf8=\\\x14SF`'''
+app.secret_key = os.urandom(24) 
 
 if __name__ == '__main__':
     app.run(debug=True)
